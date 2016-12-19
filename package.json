@@ -1,0 +1,24 @@
+{
+  "name": "jarvis-actionsongoogle",
+  "version": "1.0.0",
+  "description": "An assistant created using the Actions SDK",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Humad/JARVIS-ActionsOnGoogle.git"
+  },
+  "author": "Humad Syed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Humad/JARVIS-ActionsOnGoogle/issues"
+  },
+  "homepage": "https://github.com/Humad/JARVIS-ActionsOnGoogle#readme",
+  "dependencies": {
+    "actions-on-google": "^1.0.4",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}

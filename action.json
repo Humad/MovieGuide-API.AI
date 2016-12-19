@@ -1,0 +1,36 @@
+{
+  "versionLabel": "1.00",
+  "agentInfo": {
+    "languageCode": "en-US",
+    "projectId": "<INSERT YOUR PROJECT ID HERE>",
+    "voiceName": "male_2"
+  },
+  "actions": [
+    {
+      "description": "Launch intent",
+      "initialTrigger": {
+        "intent": "assistant.intent.action.MAIN"
+      },
+      "httpExecution": {
+        "url": "<INSERT YOUR EXECUTION URL HERE>"
+      }
+    },
+    {
+      "description": "guess a number game",
+      "initialTrigger": {
+        "intent": "START_GUESS_NUMBER",
+        "queryPatterns": [
+          {
+            "queryPattern": "find a magic number"
+          },
+          {
+            "queryPattern": "guess a number"
+          }
+        ]
+      },
+      "httpExecution": {
+        "url": "<INSERT YOUR EXECUTION URL HERE>"
+      }
+    }
+  ]
+}
