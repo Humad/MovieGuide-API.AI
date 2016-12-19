@@ -8,6 +8,10 @@ var ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
 
 app.use(bodyParser.json());
 
+app.get('/', function(req, res){
+    res.send('This is the webhook for the JARVIS assistant. Please send a post request');
+})
+
 app.post('/', function(req, res){
     var assistant = new ActionsSdkAssistant({request: req, response: res});
     welcomeIntent(assistant);
