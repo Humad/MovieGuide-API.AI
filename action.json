@@ -20,9 +20,7 @@
       "initialTrigger": {
         "intent": "FIND_NEARBY_MOVIES",
         "queryPatterns": [
-          {
-            "queryPattern": "(Find)? (Show)? (What)? Movies (playing)? near me"
-          },
+          {"queryPattern": "(Find)? (Show)? (What)? Movies (playing)? near me"}
         ]
       },
       "httpExecution": {
@@ -35,16 +33,12 @@
         "initialTrigger": {
             "intent": "FIND_RATING",
             "queryPatterns": [
-                {
-                    "queryPattern": "(What is)? rating (of)? (for)? $SchemaOrg_Movie:movieName"
-                },
-                {
-                    "queryPattern": "(What are the)? reviews (like)? (for)? $SchemaOrg_Movie:movieName"
-                }
+                {"queryPattern": "(What is)? rating (of)? (for)? $SchemaOrg_Movie:movieName"},
+                {"queryPattern": "(What are the)? reviews (like)? (for)? $SchemaOrg_Movie:movieName"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
 
@@ -53,13 +47,11 @@
         "initialTrigger": {
             "intent": "FIND_BY_DIRECTOR",
             "queryPatterns": [
-                {
-                    "queryPattern": "(Show me)? movies (directed)? (by)? $SchemaOrg_Person:directorName"
-                }
+                {"queryPattern": "(Show me)? movies (directed)? (by)? $SchemaOrg_Person:directorName"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
 
@@ -68,13 +60,11 @@
         "initialTrigger": {
             "intent": "FIND_BY_ACTOR",
             "queryPatterns": [
-                {
-                    "queryPattern": "(Show me)? movies (with)? (starring)? $SchemaOrg_Person:actorName"
-                }
+                {"queryPattern": "(Show me)? movies (with)? (starring)? $SchemaOrg_Person:actorName"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
 
@@ -83,13 +73,11 @@
         "initialTrigger": {
             "intent": "GIVE_DETAILS",
             "queryPatterns": [
-                {
-                    "queryPattern": "(Tell me)? (Give me details)? (What do you know)? (about)? $SchemaOrg_Movie:movieName"
-                }
+                {"queryPattern": "(Tell me)? (Give me details)? (What do you know)? (about)? $SchemaOrg_Movie:movieName"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
 
@@ -98,13 +86,11 @@
         "initialTrigger": {
             "intent": "FIND_UPCOMING",
             "queryPatterns": [
-                {
-                    "queryPattern": "(What is coming out)? (Upcoming movies)? ($String:month)?"
-                }
+                {"queryPattern": "(What is coming out)? (Upcoming movies)? ($String:month)?"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
 
@@ -113,19 +99,13 @@
         "initialTrigger": {
             "intent": "GIVE_RECOMMENDATION",
             "queryPatterns": [
-                {
-                    "queryPattern": "What should I watch?"
-                },
-                {
-                    "queryPattern": "Give me a recommendation"
-                },
-                {
-                    "queryPattern": "Tell me a good ($String:genre)? movie"
-                }
+                {"queryPattern": "What should I watch?"},
+                {"queryPattern": "Give me a recommendation"},
+                {"queryPattern": "Tell me a good ($String:genre)? movie"}
             ],
         },
         "httpExecution": {
-            "url":""
+            "url":"https://jarvis-aog.herokuapp.com/"
         }
     }
   ]
