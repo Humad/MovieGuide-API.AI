@@ -2,7 +2,7 @@
   "versionLabel": "1.00",
   "agentInfo": {
     "languageCode": "en-US",
-    "projectId": "<INSERT YOUR PROJECT ID HERE>",
+    "projectId": "jarvis-153010",
     "voiceName": "male_2"
   },
   "actions": [
@@ -12,25 +12,121 @@
         "intent": "assistant.intent.action.MAIN"
       },
       "httpExecution": {
-        "url": "<INSERT YOUR EXECUTION URL HERE>"
+        "url": "https://jarvis-aog.herokuapp.com/"
       }
     },
     {
-      "description": "guess a number game",
+      "description": "Movies near me",
       "initialTrigger": {
-        "intent": "START_GUESS_NUMBER",
+        "intent": "FIND_NEARBY_MOVIES",
         "queryPatterns": [
           {
-            "queryPattern": "find a magic number"
+            "queryPattern": "(Find)? (Show)? (What)? Movies (playing)? near me"
           },
-          {
-            "queryPattern": "guess a number"
-          }
         ]
       },
       "httpExecution": {
-        "url": "<INSERT YOUR EXECUTION URL HERE>"
+        "url": "https://jarvis-aog.herokuapp.com/"
       }
+    },
+
+    {
+        "description": "What is the rating",
+        "initialTrigger": {
+            "intent": "FIND_RATING",
+            "queryPatterns": [
+                {
+                    "queryPattern": "(What is)? rating (of)? (for)? $SchemaOrg_Movie:movieName"
+                },
+                {
+                    "queryPattern": "(What are the)? reviews (like)? (for)? $SchemaOrg_Movie:movieName"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
+    },
+
+    {
+        "description": "Movies by director",
+        "initialTrigger": {
+            "intent": "FIND_BY_DIRECTOR",
+            "queryPatterns": [
+                {
+                    "queryPattern": "(Show me)? movies (directed)? (by)? $SchemaOrg_Person:directorName"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
+    },
+
+    {
+        "description": "Movies by actor",
+        "initialTrigger": {
+            "intent": "FIND_BY_ACTOR",
+            "queryPatterns": [
+                {
+                    "queryPattern": "(Show me)? movies (with)? (starring)? $SchemaOrg_Person:actorName"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
+    },
+
+    {
+        "description": "Movie details",
+        "initialTrigger": {
+            "intent": "GIVE_DETAILS",
+            "queryPatterns": [
+                {
+                    "queryPattern": "(Tell me)? (Give me details)? (What do you know)? (about)? $SchemaOrg_Movie:movieName"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
+    },
+
+    {
+        "description": "Upcoming movies",
+        "initialTrigger": {
+            "intent": "FIND_UPCOMING",
+            "queryPatterns": [
+                {
+                    "queryPattern": "(What is coming out)? (Upcoming movies)? ($String:month)?"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
+    },
+
+    {
+        "description": "Recommend movies",
+        "initialTrigger": {
+            "intent": "GIVE_RECOMMENDATION",
+            "queryPatterns": [
+                {
+                    "queryPattern": "What should I watch?"
+                },
+                {
+                    "queryPattern": "Give me a recommendation"
+                },
+                {
+                    "queryPattern": "Tell me a good ($String:genre)? movie"
+                }
+            ],
+        },
+        "httpExecution": {
+            "url":""
+        }
     }
   ]
 }
