@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 
 // Actions SDK
 let ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
+let assistant;
+
 
 let intents = [
                 "FIND_NEARBY_MOVIES",
@@ -27,11 +29,11 @@ actionMap.set(intents[6], giveRecommendation);
 app.use(bodyParser.json());
 
 app.get('/', function(req, res){
-    res.send('This is the webhook for the JARVIS assistant. Please send a post request');
+    res.send('This is the webhook for the MovieBuff assistant. Please send a post request');
 });
 
 app.post('/', function(req, res){
-    let assistant = new ActionsSdkAssistant({request: req, response: res});
+    assistant = new ActionsSdkAssistant({request: req, response: res});
     console.log('Current intent: ' + assistant.getIntent());
     actionMap.set(assistant.StandardIntents.MAIN, welcomeIntent);
     console.log('Current action version label: ' + assistant.getActionVersionLabel());
