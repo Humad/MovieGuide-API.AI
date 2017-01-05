@@ -27,7 +27,6 @@
         "url": "https://jarvis-aog.herokuapp.com/"
       }
     },
-
     {
         "description": "What is the rating",
         "initialTrigger": {
@@ -35,65 +34,60 @@
             "queryPatterns": [
                 {"queryPattern": "(What is)? rating (of)? (for)? $SchemaOrg_Movie:movieName"},
                 {"queryPattern": "(What are the)? reviews (like)? (for)? $SchemaOrg_Movie:movieName"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
-
     {
         "description": "Movies by director",
         "initialTrigger": {
             "intent": "FIND_BY_DIRECTOR",
             "queryPatterns": [
                 {"queryPattern": "(Show me)? movies (directed)? (by)? $SchemaOrg_Person:directorName"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
-
     {
         "description": "Movies by actor",
         "initialTrigger": {
             "intent": "FIND_BY_ACTOR",
             "queryPatterns": [
                 {"queryPattern": "(Show me)? movies (with)? (starring)? $SchemaOrg_Person:actorName"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
-
     {
         "description": "Movie details",
         "initialTrigger": {
             "intent": "GIVE_DETAILS",
             "queryPatterns": [
                 {"queryPattern": "(Tell me)? (Give me details)? (What do you know)? (about)? $SchemaOrg_Movie:movieName"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
-
     {
         "description": "Upcoming movies",
         "initialTrigger": {
             "intent": "FIND_UPCOMING",
             "queryPatterns": [
                 {"queryPattern": "(What is coming out)? (Upcoming movies)? ($String:month)?"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
         }
     },
-
     {
         "description": "Recommend movies",
         "initialTrigger": {
@@ -102,7 +96,7 @@
                 {"queryPattern": "What should I watch?"},
                 {"queryPattern": "Give me a recommendation"},
                 {"queryPattern": "Tell me a good ($String:genre)? movie"}
-            ],
+            ]
         },
         "httpExecution": {
             "url":"https://jarvis-aog.herokuapp.com/"
