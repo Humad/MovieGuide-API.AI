@@ -36,10 +36,15 @@ app.post('/', function(req, res){
     assistant = new ActionsSdkAssistant({request: req, response: res});
     console.log('Current intent: ' + assistant.getIntent());
     actionMap.set(assistant.StandardIntents.MAIN, welcomeIntent);
+    actionMap.set(assistant.StandardIntents.TEXT, textIntent);
     console.log('Current action version label: ' + assistant.getActionVersionLabel());
     console.log('Current conversation ID: ' + assistant.getConversationId());
     assistant.handleRequest(actionMap);
 });
+
+function textIntent(assistant){
+    console.log('Regular text intent recorded');
+}
 
 function welcomeIntent(assistant){
     let inputPrompt = assistant.buildInputPrompt(false,
