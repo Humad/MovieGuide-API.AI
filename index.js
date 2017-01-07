@@ -35,12 +35,13 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
     if (!req.body.result){
-        console.log('Incorrect JSON object send');
+        console.log('Incorrect JSON object sent');
     } else {
         var actionName = req.body.result.action;
         if (actionMap.has(actionName)){
             actionMap.get(actionName)(req, res);
         } else {
+            console.log('No function found for requested action');
             sendResponse(res);
         }
     }
