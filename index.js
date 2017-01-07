@@ -19,7 +19,7 @@ function sendResponse(res){
         "speech": "You can ask me to help you with Movies!",
         "displayText": "You can ask me to help you with Movies!",
         "data": {},
-        "contextOut":{},
+        "contextOut":[],
         "source":""
     };
     console.log(response);
