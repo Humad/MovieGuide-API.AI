@@ -14,21 +14,28 @@ function howToUse(req, res){
     sendResponse(res);
 };
 
-function sendResponse(res){
+function movieDetails(req, res){
+    console.log('This is the movie details function');
     var response = {
-        "speech": "You can ask me to help you with Movies!",
-        "displayText": "You can ask me to help you with Movies!",
+        "speech": "You asked for details about " + req.body.result.parameters,
+        "displayText": "You asked for details about " + req.body.result.parameters,
         "data": {},
         "contextOut":[],
         "source":""
     };
+    sendResponse(res, response);
+};
+
+function sendResponse(res, response){
     console.log(response);
     console.log('Sending response');
     res.json(response);
-}
+};
 
 var actionMap = new Map();
 actionMap.set('howToUse', howToUse);
+actionMap.set('movie.details', movieDetails);
+
 
 app.get('/', function(req, res){
     res.send('This is the webhook for MovieBuff. Send a POST request');
@@ -43,7 +50,7 @@ app.post('/', function(req, res){
             actionMap.get(actionName)(req, res);
         } else {
             console.log('No function found for requested action');
-            sendResponse(res);
+            sendResponse(res, response);
         }
     }
 });
