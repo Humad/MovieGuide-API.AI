@@ -22,7 +22,8 @@ function sendResponse(res){
         "contextOut":{},
         "source":""
     };
-
+    console.log(response);
+    console.log('Sending response');
     res.json(response);
 }
 
