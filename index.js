@@ -29,6 +29,34 @@ function movieDetails(req, res){
     sendResponse(res, response);
 };
 
+// pre: takes response and request objects as parameters
+// post: sends the names of movies starring the actor(s) requested by the user
+function movieCast(req, res){
+    console.log('This is the movie cast function');
+    var response = {
+        "speech": "You asked for details about " + req.body.result.parameters.actorName[0],
+        "displayText": "You asked for details about " + req.body.result.parameters.actorName[0],
+        "data": {},
+        "contextOut":[],
+        "source":""
+    };
+    sendResponse(res,response);
+};
+
+function movieDirector(req, res){
+    console.log('This is the movie director function');
+    var response = {
+        "speech": "You asked for details about " + req.body.result.parameters.directorName[0],
+        "displayText": "You asked for details about " + req.body.result.parameters.directorName[0],
+        "data": {},
+        "contextOut":[],
+        "source":""
+    };
+    sendResponse(res, response);
+}
+
+
+
 // pre: takes the server response object and a custom response object
 // post: sends the custom response object through the server response object as JSON
 function sendResponse(res, response){
@@ -41,6 +69,8 @@ function sendResponse(res, response){
 var actionMap = new Map();
 actionMap.set('howToUse', howToUse);
 actionMap.set('movie.details', movieDetails);
+actionMap.set('movie.cast', movieCast);
+actionMap.set('movie.director', movieDirector);
 
 
 app.get('/', function(req, res){
