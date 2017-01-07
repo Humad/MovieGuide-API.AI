@@ -17,8 +17,8 @@ function howToUse(req, res){
 function movieDetails(req, res){
     console.log('This is the movie details function');
     var response = {
-        "speech": "You asked for details about " + req.body.result.parameters,
-        "displayText": "You asked for details about " + req.body.result.parameters,
+        "speech": "You asked for details about " + req.body.result.parameters.movieName,
+        "displayText": "You asked for details about " + req.body.result.parameters.movieName,
         "data": {},
         "contextOut":[],
         "source":""
