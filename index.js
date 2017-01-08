@@ -24,15 +24,16 @@ function movieDetails(req, res){
     console.log('Request received for movie details');
 
     var requestOptions = {
-        url: "https://api.themoviedb.org/3/search/movie",
+        url: "http://www.omdbapi.com/",
         method: "GET",
         json: {},
         qs: {
-            api_key: API_KEY,
-            language: "en-us",
-            query: req.body.result.parameters.movieName,
-            page: 1,
-            include_adult:false
+            t: req.body.result.parameters.movieName,
+            type: "movie",
+            plot: "short",
+            r: "json",
+            tomatoes: "true",
+            y: ""
         }
     };
 
@@ -43,12 +44,12 @@ function movieDetails(req, res){
             res.status(400);
         } else {
             console.log('Request successful');
-            var movieData = body.results[0];
 
-            var speechText = movieData.title + " was released on "
-                            + movieData.release_date + ". Here is what I found about the plot,"
-                            + movieData.overview;
-
+            var speechText = body.Title + " was released on "
+                            + body.Year + ". It is directed by " + body.Director
+                            + " and stars " + body.Actors + ". " + body.Plot
+                            + ". The movie has a rating of " + body.tomatoMeter
+                            + " percent on Rotten Tomatoes";
 
             var speechResponse = {
                 "speech": speechText,
