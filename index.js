@@ -121,10 +121,11 @@ function generateMovieCastResponse(req, res, body){
         speechText = "I could not find any movies starring"
                     + actor;
     } else {
-        speechText = body[0];
+        var movies = body.results[0].known_for;
+        speechText = movies[0];
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
-            speechText += (" " + body[i]);
+            speechText += (" " + movies[i]);
         }
     }
 
