@@ -114,7 +114,7 @@ function movieCast(req, res){
 };
 
 function generateMovieCastResponse(req, res, body){
-    var numMovies = (body.length > 3 ? 3 : body.length);
+    var numMovies = (body.results[0].known_for.length > 3 ? 3 : body.results[0].known_for.length);
     var actor = req.body.result.parameters.actorName[0];
 
     var speechText;
