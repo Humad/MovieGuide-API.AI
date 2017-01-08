@@ -107,6 +107,7 @@ function movieCast(req, res){
             res.status(400);
         } else {
             console.log('Request successful');
+            console.log(body);
             generateMovieCastResponse(req, res, body);
         }
     });
