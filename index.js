@@ -44,25 +44,48 @@ function movieDetails(req, res){
             res.status(400);
         } else {
             console.log('Request successful');
-            var movieData = body;
-            var speechText = movieData.Title + " was released on "
-                            + movieData.Year + ". It is directed by " + movieData.Director
-                            + " and stars " + movieData.Actors + ". " + movieData.Plot
-                            + ". The movie has a rating of " + movieData.tomatoMeter
-                            + " percent on Rotten Tomatoes";
-
-            var speechResponse = {
-                "speech": speechText,
-                "displayText": speechText,
-                "data": {},
-                "contextOut":[],
-                "source":""
-            };
-
-            sendResponse(res, speechResponse);
+            generateMovieDetailResponse(req, res, body);
         }
     });
 };
+
+function generateMovieDetailResponse(req, res, data){
+    var speechText;
+    switch (req.body.result.parameters.movieDetails) {
+        case "director":
+            speechText = data.Title + " is directed by " + data.Director;
+            break;
+        case "year":
+            speechText = data.Title + " was released in the year " + data.Year;
+            break;
+        case "cast":
+            speechText = data.Title + " stars " + data.Actors;
+            break;
+        case "plot":
+            speechText = data.Plot;
+            break;
+        case "score":
+            speechText = data.Title + " has a score of " + data.tomatoMeter
+                        + " percent on Rotten Tomatoes. " + data.tomatoConsensus;
+            break;
+        default:
+            speechText = data.Title + " was released in "
+                        + data.Year + ". It is directed by " + data.Director
+                        + " and stars " + data.Actors + ". " + data.Plot
+                        + ". The movie has a rating of " + data.tomatoMeter
+                        + " percent on Rotten Tomatoes";
+        }
+
+    var speechResponse = {
+        "speech": speechText,
+        "displayText": speechText,
+        "data": {},
+        "contextOut":[],
+        "source":""
+    };
+
+    sendResponse(res, speechResponse);
+}
 
 // pre: takes response and request objects as parameters
 // post: sends the names of movies starring the actor(s) requested by the user
