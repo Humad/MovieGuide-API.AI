@@ -28,7 +28,7 @@ function movieDetails(req, res){
         method: "GET",
         json: {},
         qs: {
-            t: req.body.result.parameters.movieName,
+            s: req.body.result.parameters.movieName,
             type: "movie",
             plot: "short",
             r: "json",
