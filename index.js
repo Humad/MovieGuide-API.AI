@@ -9,14 +9,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-let API_KEY = "7532c5a122204ba501be1d49beed6b53";
-
-// pre: takes request and response objects as parameters
-// post: sends instructions to the user about how to use the agent
-function howToUse(req, res){
-    console.log('This is the howToUse function');
-    sendResponse(res);
-};
+let API_KEY = process.env.API_KEY;
 
 // pre: takes request and response objects as parameters
 // post: sends details regarding the movie the user asked for
@@ -91,14 +84,61 @@ function generateMovieDetailResponse(req, res, data){
 // post: sends the names of movies starring the actor(s) requested by the user
 function movieCast(req, res){
     console.log('This is the movie cast function');
-    var response = {
-        "speech": "You asked for details about " + req.body.result.parameters.actorName[0],
-        "displayText": "You asked for details about " + req.body.result.parameters.actorName[0],
+
+    var actors = req.body.result.parameters.actorName;
+
+    var requestOptions = {
+        url: "https://api.themoviedb.org/3/search/person",
+        method: "GET",
+        json: {},
+        qs: {
+            api_key: API_KEY,
+            language: "en-US",
+            query: actors[0],
+            page: 1,
+            include_adult: false
+        }
+    };
+
+    request(requestOptions, function(err, response, body){
+        console.log('Request sent to api');
+        if (err || res.statusCode !== 200){
+            console.log('Error from api: ' + err);
+            res.status(400);
+        } else {
+            console.log('Request successful');
+            generateMovieCastResponse(req, res, body);
+        }
+    });
+};
+
+function generateMovieCastResponse(req, res, body){
+    var numMovies = (body.length > 3 ? 3 : body.length);
+    var actor = req.body.result.parameters.actorName[0];
+
+    var speechText;
+    if (numMovies === 0) {
+        speechText = "I could not find any movies starring"
+                    + actor;
+    } else {
+        speechText = body[0];
+        for (var i = 1; i < numMovies; i++){
+            speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
+            speechText += (" " + body[i]);
+        }
+    }
+
+    speechText = actor + " has starred in movies such as " + speechText;
+
+    var speechResponse = {
+        "speech": speechText,
+        "displayText": speechText,
         "data": {},
         "contextOut":[],
         "source":""
     };
-    sendResponse(res,response);
+
+    sendResponse(res, speechResponse);
 };
 
 // pre: takes request and response objects as parameters
@@ -139,7 +179,6 @@ function sendResponse(res, response){
 
 // A map that stores the function for each action
 var actionMap = new Map();
-actionMap.set('howToUse', howToUse);
 actionMap.set('movie.details', movieDetails);
 actionMap.set('movie.cast', movieCast);
 actionMap.set('movie.director', movieDirector);
