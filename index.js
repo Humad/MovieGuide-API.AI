@@ -44,11 +44,11 @@ function movieDetails(req, res){
             res.status(400);
         } else {
             console.log('Request successful');
-
-            var speechText = body.Title + " was released on "
-                            + body.Year + ". It is directed by " + body.Director
-                            + " and stars " + body.Actors + ". " + body.Plot
-                            + ". The movie has a rating of " + body.tomatoMeter
+            var movieData = body.Search[0];
+            var speechText = movieData.Title + " was released on "
+                            + movieData.Year + ". It is directed by " + movieData.Director
+                            + " and stars " + movieData.Actors + ". " + movieData.Plot
+                            + ". The movie has a rating of " + movieData.tomatoMeter
                             + " percent on Rotten Tomatoes";
 
             var speechResponse = {
