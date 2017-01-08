@@ -28,7 +28,7 @@ function movieDetails(req, res){
         method: "GET",
         json: {},
         qs: {
-            s: req.body.result.parameters.movieName,
+            t: req.body.result.parameters.movieName,
             type: "movie",
             plot: "short",
             r: "json",
@@ -44,7 +44,7 @@ function movieDetails(req, res){
             res.status(400);
         } else {
             console.log('Request successful');
-            var movieData = body.Search[0];
+            var movieData = body;
             var speechText = movieData.Title + " was released on "
                             + movieData.Year + ". It is directed by " + movieData.Director
                             + " and stars " + movieData.Actors + ". " + movieData.Plot
