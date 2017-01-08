@@ -54,7 +54,7 @@ function movieDetails(req, res){
 
             sendResponse(res, speechResponse);
         }
-    };
+    });
 };
 
 // pre: takes response and request objects as parameters
