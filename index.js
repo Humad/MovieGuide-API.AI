@@ -123,10 +123,10 @@ function generateMovieCastResponse(req, res, body){
                     + actor;
     } else {
         var movies = body.results[0].known_for;
-        speechText = movies[0];
+        speechText = movies[0].title;
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
-            speechText += (" " + movies[i]);
+            speechText += (" " + movies[i].title);
         }
     }
 
