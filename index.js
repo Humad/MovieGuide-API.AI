@@ -44,9 +44,15 @@ function movieDetails(req, res){
         } else {
             console.log('Request successful');
             var movieData = body.results[0];
+
+            var speechText = movieData.title + " was released on "
+                            + movieData.release_date + ". Here is what I found about the plot,"
+                            + movieData.overview;
+
+
             var speechResponse = {
-                "speech": "You asked for details about " + movieData.title,
-                "displayText": "You asked for details about " + movieData.title,
+                "speech": speechText,
+                "displayText": speechText,
                 "data": {},
                 "contextOut":[],
                 "source":""
