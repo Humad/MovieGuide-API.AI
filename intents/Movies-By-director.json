@@ -1,0 +1,73 @@
+{
+  "userSays": [
+    {
+      "id": "9a9057e4-7bb4-477d-a666-029315bf565e",
+      "data": [
+        {
+          "text": "what movies has "
+        },
+        {
+          "text": "directorName",
+          "alias": "directorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " directed"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "52e75e8f-39bf-4e8b-b0e1-1612e92656dc",
+      "data": [
+        {
+          "text": "Movies directed by "
+        },
+        {
+          "text": "directorName",
+          "alias": "directorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "d9934416-5ed0-4d0f-9f0b-f2442f859199",
+  "name": "Movies-By-director",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.director",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "directorName",
+          "value": "$directorName",
+          "prompts": [
+            "What director would you like to see movies from?"
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Umm, this is awkward, but something is wrong with my servers. Give me a moment to fix that"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

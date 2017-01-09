@@ -1,0 +1,48 @@
+{
+  "id": "e1645b7d-4d05-4cec-b5a8-1ae71365a3b2",
+  "name": "movieDetails",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "director",
+      "synonyms": [
+        "director",
+        "directed"
+      ]
+    },
+    {
+      "value": "year",
+      "synonyms": [
+        "year",
+        "when"
+      ]
+    },
+    {
+      "value": "cast",
+      "synonyms": [
+        "cast",
+        "actors",
+        "starring"
+      ]
+    },
+    {
+      "value": "score",
+      "synonyms": [
+        "score",
+        "rating",
+        "tomatometer",
+        "reviews"
+      ]
+    },
+    {
+      "value": "plot",
+      "synonyms": [
+        "plot",
+        "about",
+        "synopsis"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

@@ -1,0 +1,67 @@
+{
+  "userSays": [
+    {
+      "id": "4975f207-7663-4f96-841c-2258a9254f57",
+      "data": [
+        {
+          "text": "remind me how to use you"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "be830dc9-fffb-44e0-900c-648baf7a3a5f",
+      "data": [
+        {
+          "text": "how can you help me"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4ee1b5ff-89c7-43bf-8b1f-6ce27180a172",
+      "data": [
+        {
+          "text": "whats up"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3e58ca41-4773-45df-9956-d2c6a32e71a3",
+      "data": [
+        {
+          "text": "What can you do"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "f42a226e-9cef-4c9c-88c6-094e72d6b701",
+  "name": "How-To-Use",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "howToUse",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

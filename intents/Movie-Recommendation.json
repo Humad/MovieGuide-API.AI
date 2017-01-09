@@ -1,0 +1,167 @@
+{
+  "userSays": [
+    {
+      "id": "9fe7d88a-9679-4058-aae4-03d0d560d3b0",
+      "data": [
+        {
+          "text": "got any "
+        },
+        {
+          "text": "action",
+          "alias": "Genres",
+          "meta": "@Genres",
+          "userDefined": false
+        },
+        {
+          "text": " recommendations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "45b033f8-b5a1-4f97-b39e-87f31f91d8b2",
+      "data": [
+        {
+          "text": "got any recommendations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "bf0cd01b-9c41-4185-a426-8289a613456b",
+      "data": [
+        {
+          "text": "recommend a "
+        },
+        {
+          "text": "romantic comedy",
+          "alias": "Genres",
+          "meta": "@Genres",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3fca4e6a-ccd4-43f7-9031-2a0f1ae501d1",
+      "data": [
+        {
+          "text": "recommend a "
+        },
+        {
+          "text": "comedy",
+          "alias": "Genres",
+          "meta": "@Genres",
+          "userDefined": false
+        },
+        {
+          "text": " movie"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ae619bca-d8ad-4dd6-86df-c00d8fd57f50",
+      "data": [
+        {
+          "text": "Tell me a good "
+        },
+        {
+          "text": "horror",
+          "alias": "Genres",
+          "meta": "@Genres",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "film",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d0c7d149-891b-4a7a-92d4-422ab13a0974",
+      "data": [
+        {
+          "text": "Tell me a good "
+        },
+        {
+          "text": "film",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4e961938-39dd-4547-899f-c54e2ddfa985",
+      "data": [
+        {
+          "text": "Tell me a good movie"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0dbacb3d-81f2-41a2-9a23-2dd0bee17f87",
+      "data": [
+        {
+          "text": "Recommend a movie"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "43edcd3c-ff68-4e08-a3ae-33e27ee43389",
+      "data": [
+        {
+          "text": "What should I watch?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "9a530b68-1f02-45ed-a058-2a8d98e65dd8",
+  "name": "Movie-Recommendation",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.recommendation",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@Genres",
+          "name": "Genres",
+          "value": "$Genres",
+          "isList": true
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

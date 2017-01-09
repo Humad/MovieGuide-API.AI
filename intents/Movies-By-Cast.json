@@ -1,0 +1,73 @@
+{
+  "userSays": [
+    {
+      "id": "2d97738f-f5d9-4a29-a123-7e14cedcf975",
+      "data": [
+        {
+          "text": "What movies has "
+        },
+        {
+          "text": "actorName",
+          "alias": "actorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " starred in?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "805f0aeb-9891-4f8c-8de6-6dc5b00fed89",
+      "data": [
+        {
+          "text": "Show me movies with "
+        },
+        {
+          "text": "actorName",
+          "alias": "actorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "11a06bb9-74c0-40e5-9b2c-5fd9cba83b52",
+  "name": "Movies-By-Cast",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.cast",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "actorName",
+          "value": "$actorName",
+          "prompts": [
+            "Which actors would you like to see?"
+          ],
+          "isList": true
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Whoopsies, my server doesn\u0027t seem to be responding"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

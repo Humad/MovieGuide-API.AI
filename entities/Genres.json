@@ -1,0 +1,88 @@
+{
+  "id": "64e158ea-2dc1-49e5-b50e-d0fd2bb78cfd",
+  "name": "Genres",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Horror",
+      "synonyms": [
+        "Horror",
+        "scary"
+      ]
+    },
+    {
+      "value": "Action",
+      "synonyms": [
+        "Action",
+        "exciting"
+      ]
+    },
+    {
+      "value": "Adventure",
+      "synonyms": [
+        "Adventure"
+      ]
+    },
+    {
+      "value": "Fantasy",
+      "synonyms": [
+        "Fantasy",
+        "magic",
+        "dragons"
+      ]
+    },
+    {
+      "value": "science fiction",
+      "synonyms": [
+        "science fiction",
+        "futuristic",
+        "tech"
+      ]
+    },
+    {
+      "value": "documentary",
+      "synonyms": [
+        "documentary",
+        "factual",
+        "informative"
+      ]
+    },
+    {
+      "value": "romance",
+      "synonyms": [
+        "romance",
+        "love",
+        "romanctic"
+      ]
+    },
+    {
+      "value": "comedy",
+      "synonyms": [
+        "comedy",
+        "romantic comedy",
+        "funny",
+        "light hearted"
+      ]
+    },
+    {
+      "value": "musical",
+      "synonyms": [
+        "musical"
+      ]
+    },
+    {
+      "value": "war",
+      "synonyms": [
+        "war"
+      ]
+    },
+    {
+      "value": "thriller",
+      "synonyms": [
+        "thriller"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": true
+}

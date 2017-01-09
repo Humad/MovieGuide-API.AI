@@ -1,0 +1,285 @@
+{
+  "userSays": [
+    {
+      "id": "44909cea-b6c2-416e-9346-b81733244812",
+      "data": [
+        {
+          "text": "when",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " did "
+        },
+        {
+          "text": "star wars",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": " release"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "52da994f-0975-4c85-8099-dee4ecb6000f",
+      "data": [
+        {
+          "text": "actors",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " in "
+        },
+        {
+          "text": "dragonball z",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "55a86326-4bc9-4a03-bd7c-1f54c421a9f2",
+      "data": [
+        {
+          "text": "what "
+        },
+        {
+          "text": "year",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " did "
+        },
+        {
+          "text": "man of steel",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": " release"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "47a67e50-7293-4551-8b13-e4adccab8a15",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "stars",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " in "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "72344e60-b5ee-4d55-90f4-31e271bc460e",
+      "data": [
+        {
+          "text": "when",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " did "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " come out"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cb5c1538-2c69-4076-a933-26517e7d3f9f",
+      "data": [
+        {
+          "text": "who is the "
+        },
+        {
+          "text": "director",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " of "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1e9f8da6-d5d1-4fd9-94d4-3790f7fce152",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cbbc7c36-2cdb-49b0-813d-2e81b15db6f7",
+      "data": [
+        {
+          "text": "what year was "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " released in"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "32184303-8e91-4a48-a616-aaa3287fd5bb",
+      "data": [
+        {
+          "text": "I want to know about "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cd7bb22b-4945-416d-beb0-8bb96d0b2744",
+      "data": [
+        {
+          "text": "What can you tell me about "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ce4bd531-5ff6-4338-8f11-ab2dc62a9ee9",
+      "data": [
+        {
+          "text": "tell me about "
+        },
+        {
+          "text": "movieName",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "2a899d3b-483d-4c59-8671-b5cf3e319c23",
+  "name": "Movie-Details",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.details",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "movieName",
+          "value": "$movieName",
+          "prompts": [
+            "What movie would you like details for?"
+          ]
+        },
+        {
+          "dataType": "@movieDetails",
+          "name": "movieDetails",
+          "value": "$movieDetails",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "There seems to be something wrong with my servers... Give me a moment"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
