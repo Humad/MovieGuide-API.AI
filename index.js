@@ -177,11 +177,14 @@ function movieDirector(req, res){
 
 // to-do: this is a redundant function; find a way to merge with moviecastresponse
 function generateMovieDirectorResponse(req, res, body){
+    console.log('Generating movie director response');
     var movies = body.results[0].known_for;
-    var numMovies = (movies.length > 3 ? 3 : movies.length);
     var director = req.body.result.parameters.directorName;
-
+    console.log('Director is known for... ' + movies.toString());
+    console.log('Getting updated movie list');
     movies = getUpdatedMovieList(movies, director);
+
+    var numMovies = (movies.length > 3 ? 3 : movies.length);
 
     var speechText;
     if (numMovies === 0) {
@@ -209,12 +212,13 @@ function generateMovieDirectorResponse(req, res, body){
 }
 
 function getUpdatedMovieList(movies, director){
-
+    console.log('In updated movie list method');
     var updatedMovies = [];
     var i = 0;
 
     // run until we have 3 movies by the director or the list of movies has finished
     while (updatedMovies.length < 3 && i < movies.length){
+        console.log('Inside while loop, checking for relevant movies');
         var requestOptions = {
             url: "http://www.omdbapi.com/",
             method: "GET",
