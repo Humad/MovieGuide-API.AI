@@ -192,9 +192,8 @@ function generateMovieDirectorResponse(res, movies, director){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
             speechText += (", " + movies[i].title);
         }
+        speechText = director + " has directed movies such as " + speechText;
     }
-
-    speechText = director + " has directed movies such as " + speechText;
 
     var speechResponse = {
         "speech": speechText,
@@ -213,7 +212,7 @@ function getUpdatedMovieList(res, movies, director, updatedMovies, i){
         method: "GET",
         json: {},
         qs: {
-            t: movies[i],
+            t: movies[i].title,
             type: "movie",
             plot: "short",
             r: "json",
@@ -221,6 +220,8 @@ function getUpdatedMovieList(res, movies, director, updatedMovies, i){
             y: ""
         }
     };
+
+    console.log('Searching for ' + movies[i]);
 
     request(requestOptions, function(err, response, body){
         console.log('Request sent to api');
