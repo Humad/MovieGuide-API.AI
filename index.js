@@ -170,12 +170,28 @@ function movieDirector(req, res){
         } else {
             console.log('Request successful');
             console.log(body);
-            var movies = body.results[0].known_for;
-            var director = req.body.result.parameters.directorName;
-            getUpdatedMovieList(res, movies, director, [], 0);
+            if (body.results.length > 0){
+                var movies = body.results[0].known_for;
+                getUpdatedMovieList(res, movies, director, [], 0);
+            } else {
+                couldNotFind(res, query);
+            }
+
         }
     });
 };
+
+function couldNotFind(res, query){
+    var speechResponse = {
+        "speech": "I'm sorry, I couldn't find any information on " + query,
+        "displayText": "I'm sorry, I couldn't find any information on " + query,
+        "data": {},
+        "contextOut":[],
+        "source":""
+    };
+
+    sendResponse(res, speechResponse);
+}
 
 // to-do: this is a redundant function; find a way to merge with moviecastresponse
 function generateMovieDirectorResponse(res, movies, director){
