@@ -231,7 +231,7 @@ function getUpdatedMovieList(res, movies, director, updatedMovies, i){
         } else {
             console.log('Request successful');
             console.log(body);
-            if (body.Director === director){
+            if (body.Director.toLowerCase() === director.toLowerCase()){
                 updatedMovies.push(movies[i]);
             }
             i++;
