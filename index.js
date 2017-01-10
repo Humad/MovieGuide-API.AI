@@ -182,7 +182,7 @@ function generateMovieDirectorResponse(req, res, body){
     var director = req.body.result.parameters.directorName;
     console.log('Director is known for... ' + movies.toString());
     console.log('Getting updated movie list');
-    movies = getUpdatedMovieList(movies, director);
+    movies = getUpdatedMovieList(movies, director, [], 0);
 
     var numMovies = (movies.length > 3 ? 3 : movies.length);
 
@@ -211,14 +211,11 @@ function generateMovieDirectorResponse(req, res, body){
     sendResponse(res, speechResponse);
 }
 
-function getUpdatedMovieList(movies, director){
-    console.log('In updated movie list method');
-    var updatedMovies = [];
-    var i = 0;
-
-    // run until we have 3 movies by the director or the list of movies has finished
-    while (updatedMovies.length < 3 && i < movies.length){
-        console.log('Inside while loop, checking for relevant movies');
+function getUpdatedMovieList(movies, director, updatedMovies, i){
+    console.log('In updated movie list');
+    if (i >= movies.length || updatedMovies.length > 3){
+        return updatedMovies;
+    } else {
         var requestOptions = {
             url: "http://www.omdbapi.com/",
             method: "GET",
@@ -245,14 +242,11 @@ function getUpdatedMovieList(movies, director){
                     updatedMovies.push(movies[i]);
                 }
                 i++;
+                return getUpdatedMovieList(movies, director, updatedMovies, i);
             }
         });
     }
-
-    return updatedMovies;
 }
-
-
 
 // pre: takes request and response objects as parameters
 // post: gives a movie recommendation to the user
