@@ -174,7 +174,7 @@ function movieDirector(req, res){
                 var movies = body.results[0].known_for;
                 getUpdatedMovieList(res, movies, director, [], 0);
             } else {
-                couldNotFind(res, query);
+                couldNotFind(res, director);
             }
 
         }
