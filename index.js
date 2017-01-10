@@ -181,6 +181,8 @@ function generateMovieDirectorResponse(req, res, body){
     var numMovies = (movies.length > 3 ? 3 : movies.length);
     var director = req.body.result.parameters.directorName;
 
+    movies = getUpdatedMovieList(movies, director);
+
     var speechText;
     if (numMovies === 0) {
         speechText = "I could not find any movies directed by "
@@ -205,6 +207,48 @@ function generateMovieDirectorResponse(req, res, body){
 
     sendResponse(res, speechResponse);
 }
+
+function getUpdatedMovieList(movies, director){
+
+    var updatedMovies = [];
+    var i = 0;
+
+    // run until we have 3 movies by the director or the list of movies has finished
+    while (updatedMovies.length < 3 && i < movies.length){
+        var requestOptions = {
+            url: "http://www.omdbapi.com/",
+            method: "GET",
+            json: {},
+            qs: {
+                t: movies[i],
+                type: "movie",
+                plot: "short",
+                r: "json",
+                tomatoes: "true",
+                y: ""
+            }
+        };
+
+        request(requestOptions, function(err, response, body){
+            console.log('Request sent to api');
+            if (err || res.statusCode !== 200){
+                console.log('Error from api: ' + err);
+                res.status(400);
+            } else {
+                console.log('Request successful');
+                console.log(body);
+                if (body.Director === director){
+                    updatedMovies.push(movies[i]);
+                }
+                i++;
+            }
+        });
+    }
+
+    return updatedMovies;
+}
+
+
 
 // pre: takes request and response objects as parameters
 // post: gives a movie recommendation to the user
