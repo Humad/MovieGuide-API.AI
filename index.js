@@ -170,19 +170,15 @@ function movieDirector(req, res){
         } else {
             console.log('Request successful');
             console.log(body);
-            generateMovieDirectorResponse(req, res, body);
+            var movies = body.results[0].known_for;
+            var director = req.body.result.parameters.directorName;
+            getUpdatedMovieList(res, movies, director, [], 0);
         }
     });
 };
 
 // to-do: this is a redundant function; find a way to merge with moviecastresponse
-function generateMovieDirectorResponse(req, res, body){
-    console.log('Generating movie director response');
-    var movies = body.results[0].known_for;
-    var director = req.body.result.parameters.directorName;
-    console.log('Director is known for... ' + movies.toString());
-    console.log('Getting updated movie list');
-    movies = getUpdatedMovieList(movies, director, [], 0);
+function generateMovieDirectorResponse(res, movies){
 
     var numMovies = (movies.length > 3 ? 3 : movies.length);
 
@@ -211,41 +207,40 @@ function generateMovieDirectorResponse(req, res, body){
     sendResponse(res, speechResponse);
 }
 
-function getUpdatedMovieList(movies, director, updatedMovies, i){
-    console.log('In updated movie list');
-    if (i >= movies.length || updatedMovies.length > 3){
-        return updatedMovies;
-    } else {
-        var requestOptions = {
-            url: "http://www.omdbapi.com/",
-            method: "GET",
-            json: {},
-            qs: {
-                t: movies[i],
-                type: "movie",
-                plot: "short",
-                r: "json",
-                tomatoes: "true",
-                y: ""
-            }
-        };
+function getUpdatedMovieList(res, movies, director, updatedMovies, i){
+    var requestOptions = {
+        url: "http://www.omdbapi.com/",
+        method: "GET",
+        json: {},
+        qs: {
+            t: movies[i],
+            type: "movie",
+            plot: "short",
+            r: "json",
+            tomatoes: "true",
+            y: ""
+        }
+    };
 
-        request(requestOptions, function(err, response, body){
-            console.log('Request sent to api');
-            if (err || res.statusCode !== 200){
-                console.log('Error from api: ' + err);
-                res.status(400);
-            } else {
-                console.log('Request successful');
-                console.log(body);
-                if (body.Director === director){
-                    updatedMovies.push(movies[i]);
-                }
-                i++;
-                return getUpdatedMovieList(movies, director, updatedMovies, i);
+    request(requestOptions, function(err, response, body){
+        console.log('Request sent to api');
+        if (err || res.statusCode !== 200){
+            console.log('Error from api: ' + err);
+            res.status(400);
+        } else {
+            console.log('Request successful');
+            console.log(body);
+            if (body.Director === director){
+                updatedMovies.push(movies[i]);
             }
-        });
-    }
+            i++;
+            if (i >= movies.length || updatedMovies.length > 3){
+                generateMovieDirectorResponse(res, updatedMovies);
+            } else {
+                getUpdatedMovieList(res, movies, director, updatedMovies, i);
+            }
+        }
+    });
 }
 
 // pre: takes request and response objects as parameters
