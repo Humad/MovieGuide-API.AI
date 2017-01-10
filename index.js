@@ -178,7 +178,7 @@ function movieDirector(req, res){
 };
 
 // to-do: this is a redundant function; find a way to merge with moviecastresponse
-function generateMovieDirectorResponse(res, movies){
+function generateMovieDirectorResponse(res, movies, director){
 
     var numMovies = (movies.length > 3 ? 3 : movies.length);
 
@@ -235,7 +235,7 @@ function getUpdatedMovieList(res, movies, director, updatedMovies, i){
             }
             i++;
             if (i >= movies.length || updatedMovies.length > 3){
-                generateMovieDirectorResponse(res, updatedMovies);
+                generateMovieDirectorResponse(res, updatedMovies, director);
             } else {
                 getUpdatedMovieList(res, movies, director, updatedMovies, i);
             }
