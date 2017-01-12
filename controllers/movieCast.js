@@ -100,12 +100,12 @@ function generateMovieCastResponse(res, movieMap, actors){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
             speechText += (", " + movies.next().value[0]);
         }
-    }
 
-    if (actors.length == 1){
-        speechText = actors[0] + " has starred in movies such as " + speechText;
-    } else {
-        speechText = actors.join(',') + " have starred in movies such as " + speechText;
+        if (actors.length == 1){
+            speechText = actors[0] + " has starred in movies such as " + speechText;
+        } else {
+            speechText = actors.join(',') + " have starred in movies such as " + speechText;
+        }
     }
 
     var speechResponse = {
