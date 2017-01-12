@@ -2,8 +2,11 @@ var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
 let API_KEY = process.env.API_KEY;
 
-// pre: takes request and response objects as parameters
-// post: sends the names of movies directed by the director requested by the user
+/**
+* Finds the movies that a director is known for
+* @param {Object} req - Request
+* @param {Object} res - Response
+*/
 function movieDirector(req, res){
     console.log('This is the movie director function');
     var director = req.body.result.parameters.directorName;
@@ -39,35 +42,15 @@ function movieDirector(req, res){
     });
 };
 
-// to-do: this is a redundant function; find a way to merge with moviecastresponse
-function generateMovieDirectorResponse(res, movies, director){
-
-    var numMovies = (movies.length > 3 ? 3 : movies.length);
-
-    var speechText;
-    if (numMovies === 0) {
-        speechText = "I could not find any movies directed by "
-                    + director;
-    } else {
-        speechText = movies[0].title;
-        for (var i = 1; i < numMovies; i++){
-            speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
-            speechText += (", " + movies[i].title);
-        }
-        speechText = director + " has directed movies such as " + speechText;
-    }
-
-    var speechResponse = {
-        "speech": speechText,
-        "displayText": speechText,
-        "data": {},
-        "contextOut":[],
-        "source":""
-    };
-
-    sendResponse(res, speechResponse);
-}
-
+/**
+* Checks which of the found movies are directed by the director
+* @param {Object} res - Response
+* @param {Array.<String>} movies - List of movies the director is known for
+* @param {String} director - Name of the director requested by the user
+* @param {Array.<String>} updatedMovies - List of movies directed by the
+*   director
+* @param {number} i - Counter to keep track of movies being looked up
+*/
 function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
     var requestOptions = {
         url: "http://www.omdbapi.com/",
@@ -104,6 +87,40 @@ function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
             }
         }
     });
+}
+
+/**
+* Generates a response for the agent
+* @param {Object} res - Response
+* @param {Array.<String>} movies - List of movies the director has directed
+* @param {String} director - Name of the director requested by the user
+*/
+function generateMovieDirectorResponse(res, movies, director){
+
+    var numMovies = (movies.length > 3 ? 3 : movies.length);
+
+    var speechText;
+    if (numMovies === 0) {
+        speechText = "I could not find any movies directed by "
+                    + director;
+    } else {
+        speechText = movies[0].title;
+        for (var i = 1; i < numMovies; i++){
+            speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
+            speechText += (", " + movies[i].title);
+        }
+        speechText = director + " has directed movies such as " + speechText;
+    }
+
+    var speechResponse = {
+        "speech": speechText,
+        "displayText": speechText,
+        "data": {},
+        "contextOut":[],
+        "source":""
+    };
+
+    sendResponse(res, speechResponse);
 }
 
 module.exports = movieDirector;

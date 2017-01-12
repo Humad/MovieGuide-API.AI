@@ -2,8 +2,11 @@ var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
 let API_KEY = process.env.API_KEY;
 
-// pre: takes response and request objects as parameters
-// post: sends the names of movies starring the actor(s) requested by the user
+/**
+* Finds the movies that ONE actor is known for
+* @param {Object} req - Request
+* @param {Object} res - Response
+*/
 function movieCast(req, res){
     console.log('This is the movie cast function');
 
@@ -40,6 +43,16 @@ function movieCast(req, res){
         }
     });
 };
+
+/**
+* Finds movies by other actors and checks if there are any shared movies
+* @param {Object} res - Response
+* @param {Map.<String, number>} movieMap - Movie names mapped to counters
+*   to check if the movie is common between multiple actors
+* @param {Array.<String>} actors - List of actors requested by the user
+* @param {number} counter - Counter that keeps track of what actor is being
+*   looked up
+*/
 
 function getUpdatedActorList(res, movieMap, actors, counter){
     if (counter >= actors.length){
@@ -85,19 +98,26 @@ function getUpdatedActorList(res, movieMap, actors, counter){
     }
 }
 
+/**
+* Generates a response to be sent to the agent
+* @param {Object} res - Response
+* @param {Map.<String, number>} movieMap - Movie names mapped to counters
+*   to check if the movie is common between multiple actors
+* @param {Array.<String>} actors - List of actors requested by the user
+*/
 function generateMovieCastResponse(res, movieMap, actors){
     var numMovies = (movieMap.size > 3 ? 3 : movieMap.size);
 
     var speechText;
     if (numMovies === 0) {
-        speechText = "I could not find any movies starring"
+        speechText = "I could not find any movies starring "
                     + actors.join(',');
     } else {
         var movies = movieMap.entries();
         speechText = movies.next().value[0];
 
         for (var i = 1; i < numMovies; i++){
-            speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
+            speechText += (i !== 1 && i === numMovies - 1 ? " and" : "");
             speechText += (", " + movies.next().value[0]);
         }
 
