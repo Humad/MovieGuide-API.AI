@@ -1,3 +1,4 @@
+var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
 let API_KEY = process.env.API_KEY;
 

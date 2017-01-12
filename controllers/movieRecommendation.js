@@ -1,3 +1,5 @@
+var request = require('request');
+
 // pre: takes request and response objects as parameters
 // post: gives a movie recommendation to the user
 function movieRecommendation(req, res){

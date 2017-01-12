@@ -1,3 +1,4 @@
+var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
 
 // pre: takes request and response objects as parameters
