@@ -1,5 +1,9 @@
 var request = require('request');
-sendResponse = (require('./supportingFunctions')).sendResponse;
+var suppFunc = require('./supportingFunctions')
+var sendResponse = suppFunc.sendResponse;
+var containsErrors = suppFunc.containsErrors;
+var getPersonRequestOptions = suppFunc.getPersonRequestOptions;
+var informationNotFound = suppFunc.informationNotFound;
 let API_KEY = process.env.API_KEY;
 
 /**
@@ -8,35 +12,18 @@ let API_KEY = process.env.API_KEY;
 * @param {Object} res - Response
 */
 function movieDirector(req, res){
-    console.log('This is the movie director function');
+    // name of the director requested by the user
     var director = req.body.result.parameters.directorName;
 
-    var requestOptions = {
-        url: "https://api.themoviedb.org/3/search/person",
-        method: "GET",
-        json: {},
-        qs: {
-            api_key: API_KEY,
-            language: "en-US",
-            query: director,
-            page: 1,
-            include_adult: false
-        }
-    };
+    request(getPersonRequestOptions(director), function(err, response, body){
+        if (!containsErrors(res, response, err)){
+            if (body.results.length > 0){ // if found the person
 
-    request(requestOptions, function(err, response, body){
-        console.log('Request sent to api');
-        if (err || res.statusCode !== 200){
-            console.log('Error from api: ' + err);
-            res.status(400);
-        } else {
-            console.log('Request successful');
-            console.log(body);
-            if (body.results.length > 0){
                 var movies = body.results[0].known_for;
+
                 getUpdatedDirectorList(res, movies, director, [], 0);
-            } else {
-                couldNotFind(res, director);
+            } else { // person could not be found; likely a spelling mistake
+                informationNotFound(res, director);
             }
         }
     });
@@ -52,6 +39,9 @@ function movieDirector(req, res){
 * @param {number} i - Counter to keep track of movies being looked up
 */
 function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
+
+    // uses a different API than other requests
+    // this API gives more details about a movie
     var requestOptions = {
         url: "http://www.omdbapi.com/",
         method: "GET",
@@ -66,20 +56,14 @@ function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
         }
     };
 
-    console.log('Searching for ' + movies[i]);
-
     request(requestOptions, function(err, response, body){
-        console.log('Request sent to api');
-        if (err || res.statusCode !== 200){
-            console.log('Error from api: ' + err);
-            res.status(400);
-        } else {
-            console.log('Request successful');
-            console.log(body);
+        if (!containsErrors(res, response, err)){
             if (body.Director.toLowerCase() === director.toLowerCase()){
                 updatedMovies.push(movies[i]);
             }
+
             i++;
+
             if (i >= movies.length || updatedMovies.length > 3){
                 generateMovieDirectorResponse(res, updatedMovies, director);
             } else {
@@ -97,10 +81,11 @@ function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
 */
 function generateMovieDirectorResponse(res, movies, director){
 
+    // maximum number of movies to show is 3
     var numMovies = (movies.length > 3 ? 3 : movies.length);
-
     var speechText;
-    if (numMovies === 0) {
+
+    if (numMovies === 0) { // if no movies were found
         speechText = "I could not find any movies directed by "
                     + director;
     } else {
