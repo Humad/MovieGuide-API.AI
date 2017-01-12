@@ -43,6 +43,11 @@ function movieCast(req, res){
 
 function getUpdatedActorList(res, movieMap, actors, counter){
     if (counter >= actors.length){
+        movieMap.forEach(function(value, key, map){
+            if (map.get(key) != actors.length){
+                map.delete(key);
+            }
+        });
         generateMovieCastResponse(res, movieMap, actors);
     } else {
         var requestOptions = {
@@ -89,7 +94,7 @@ function generateMovieCastResponse(res, movieMap, actors){
                     + actors.join(',');
     } else {
         var movies = movieMap.entries();
-        speechText = movies.next().value;
+        speechText = movies.next().value[0];
 
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
