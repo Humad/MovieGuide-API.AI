@@ -31,7 +31,7 @@ function movieCast(req, res){
         } else {
             console.log('Request successful');
             console.log(body);
-            var movies = body.results.known_for;
+            var movies = body.results[0].known_for;
             for (var i = 0; i < movies.length; i++){
                 movieMap.set(movies[i].title, 1);
             }
@@ -66,7 +66,7 @@ function getUpdatedActorList(res, movieMap, actors, counter){
             } else {
                 console.log('Request successful');
                 console.log(body);
-                var movies = body.results.known_for;
+                var movies = body.results[0].known_for;
                 for (var i = 0; i < movies.length; i++){
                     if (movieMap.has(movies[i].title)){
                         if (movieMap.get(movies[i].title) == counter){
