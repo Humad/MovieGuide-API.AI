@@ -17,7 +17,7 @@ function movieCast(req, res){
     // to map each movie to the number of occurrences
     var movieMap = new Map();
 
-    request(getRequestOptions(actors[0]), function(err, response, body){
+    request(getPersonRequestOptions(actors[0]), function(err, response, body){
         if (!containsErrors(res, response, err)){
             if (body.results.length > 0){
 
@@ -58,7 +58,7 @@ function getUpdatedActorList(res, movieMap, actors, counter){
 
         generateMovieCastResponse(res, movieMap, actors);
     } else {
-        request(getRequestOptions(actors[counter]), function(err, response, body){
+        request(getPersonRequestOptions(actors[counter]), function(err, response, body){
             if (!containsErrors(res, response, err)){
                 if (body.results.length > 0){
 
@@ -73,7 +73,7 @@ function getUpdatedActorList(res, movieMap, actors, counter){
                             }
                         }
                     }
-                    
+
                     getUpdatedActorList(res, movieMap, actors, counter + 1);
                 } else {
                     informationNotFound(actors[counter]);
