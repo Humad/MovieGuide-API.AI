@@ -93,7 +93,7 @@ function generateMovieCastResponse(res, movieMap, actors){
 
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
-            speechText += (", " + movies.next().value);
+            speechText += (", " + movies.next().value[0]);
         }
     }
 
