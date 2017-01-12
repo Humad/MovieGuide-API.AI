@@ -20,7 +20,7 @@ function getPersonRequestOptions(qry){
         method: "GET",
         json: {},
         qs: {
-            api_key: API_KEY,
+            api_key: process.env.API_KEY,
             language: "en-US",
             query: qry,
             page: 1,

@@ -4,7 +4,6 @@ var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
 var getPersonRequestOptions = suppFunc.getPersonRequestOptions;
 var informationNotFound = suppFunc.informationNotFound;
-let API_KEY = process.env.API_KEY;
 
 /**
 * Finds the movies that a director is known for
