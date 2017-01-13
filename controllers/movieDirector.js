@@ -103,9 +103,9 @@ function generateMovieDirectorResponse(res, movies, director){
         "contextOut":[{
             name: 'director',
             lifespan: 5,
-            parameters: [{
+            parameters: {
                 directorName: director
-            }]
+            }
         }],
         "source":""
     };
