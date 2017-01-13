@@ -100,7 +100,13 @@ function generateMovieDirectorResponse(res, movies, director){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":[],
+        "contextOut":[{
+            name: 'director',
+            lifespan: 5,
+            parameters: [{
+                directorName: director
+            }]
+        }],
         "source":""
     };
 
