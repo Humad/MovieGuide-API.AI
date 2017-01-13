@@ -1,5 +1,5 @@
 var request = require('request');
-var suppFunc = require('./supportingFunctions')
+var suppFunc = require('./supportingFunctions');
 var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
 var getPersonRequestOptions = suppFunc.getPersonRequestOptions;

@@ -1,5 +1,6 @@
 var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
+var suppFunc = require('./supportingFunctions');
 var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
 
