@@ -117,7 +117,12 @@ function generateMovieCastResponse(res, movieMap, actors){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":[],
+        "contextOut":[{
+            name: "actor-context"
+            parameters:{
+                actorName = actors
+            }
+        }],
         "source":""
     };
 

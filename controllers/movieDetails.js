@@ -1,5 +1,7 @@
 var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
+var sendResponse = suppFunc.sendResponse;
+var containsErrors = suppFunc.containsErrors;
 
 
 /**
@@ -55,6 +57,12 @@ function generateMovieDetailResponse(req, res, data){
             break;
         case "cast":
             speechText = data.Title + " stars " + data.Actors;
+            contextOut = [{
+                name: "actor-context",
+                parameters: {
+                    actorName: data.Actors.split(',')
+                }
+            }];
             break;
         case "plot":
             speechText = data.Plot;
