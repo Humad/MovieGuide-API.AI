@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
     if (!req.body.result){
-        console.log('Incorrect JSON object sent');
+        res.send('Incorrect JSON object sent');
     } else {
         var actionName = req.body.result.action;
         if (actionMap.has(actionName)){

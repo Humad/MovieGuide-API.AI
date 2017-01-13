@@ -1,8 +1,12 @@
 var request = require('request');
 sendResponse = (require('./supportingFunctions')).sendResponse;
 
-// pre: takes request and response objects as parameters
-// post: sends details regarding the movie the user asked for
+
+/**
+* Gets particular movie details requested by the user
+* @param {Object} req - Request
+* @param {Object} res - Response
+*/
 function movieDetails(req, res){
     console.log('Request received for movie details');
 
@@ -21,20 +25,21 @@ function movieDetails(req, res){
     };
 
     request(requestOptions, function(err, response, body){
-        console.log('Request sent to api');
-        if (err || res.statusCode !== 200){
-            console.log('Error from api: ' + err);
-            res.status(400);
-        } else {
-            console.log('Request successful');
+        if (!containsErrors(res, response, err)){
             generateMovieDetailResponse(req, res, body);
         }
     });
 };
 
+/**
+* Gets particular movie details requested by the user
+* @param {Object} req - Request
+* @param {Object} res - Response
+* @param {Object} data - Movie details as JSON
+*/
 function generateMovieDetailResponse(req, res, data){
     var speechText;
-    var contextOut;
+    var contextOut = [];
     switch (req.body.result.parameters.movieDetails) {
         case "director":
             speechText = data.Title + " is directed by " + data.Director;
@@ -70,7 +75,7 @@ function generateMovieDetailResponse(req, res, data){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":[],
+        "contextOut":contextOut,
         "source":""
     };
 
