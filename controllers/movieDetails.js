@@ -34,9 +34,16 @@ function movieDetails(req, res){
 
 function generateMovieDetailResponse(req, res, data){
     var speechText;
+    var contextOut;
     switch (req.body.result.parameters.movieDetails) {
         case "director":
             speechText = data.Title + " is directed by " + data.Director;
+            contextOut = [{
+                name: "director-context",
+                parameters: {
+                    directorName: data.Director
+                }
+            }];
             break;
         case "year":
             speechText = data.Title + " was released in the year " + data.Year;
