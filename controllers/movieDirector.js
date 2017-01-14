@@ -11,13 +11,16 @@ var informationNotFound = suppFunc.informationNotFound;
 * @param {Object} res - Response
 */
 function movieDirector(req, res){
+    console.log('Request received for movieDirector');
     // name of the director requested by the user
     var director = req.body.result.parameters.directorName;
 
     request(getPersonRequestOptions(director), function(err, response, body){
+        console.log('Attempting to connect to API');
         if (!containsErrors(res, response, err)){
+            console.log('Successfully connected to API');
             if (body.results.length > 0){ // if found the person
-
+                console.log('Information found');
                 var movies = body.results[0].known_for;
 
                 getUpdatedDirectorList(res, movies, director, [], 0);
@@ -38,7 +41,7 @@ function movieDirector(req, res){
 * @param {number} i - Counter to keep track of movies being looked up
 */
 function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
-
+    console.log('Getting an updated list of directors');
     // uses a different API than other requests
     // this API gives more details about a movie
     var requestOptions = {
@@ -56,7 +59,9 @@ function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
     };
 
     request(requestOptions, function(err, response, body){
+        console.log('Attempting to connect to API');
         if (!containsErrors(res, response, err)){
+            console.log('No errors found');
             if (body.Director.toLowerCase() === director.toLowerCase()){
                 updatedMovies.push(movies[i]);
             }
@@ -79,15 +84,17 @@ function getUpdatedDirectorList(res, movies, director, updatedMovies, i){
 * @param {String} director - Name of the director requested by the user
 */
 function generateMovieDirectorResponse(res, movies, director){
-
+    console.log('Generating director response');
     // maximum number of movies to show is 3
     var numMovies = (movies.length > 3 ? 3 : movies.length);
     var speechText;
 
     if (numMovies === 0) { // if no movies were found
+        console.log('No movies found');
         speechText = "I could not find any movies directed by "
                     + director;
     } else {
+        console.log('Movies found');
         speechText = movies[0].title;
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");

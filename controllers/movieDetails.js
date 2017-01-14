@@ -28,9 +28,11 @@ function movieDetails(req, res){
     };
 
     request(requestOptions, function(err, response, body){
+        console.log('Attempting to connect to API');
         if (!containsErrors(res, response, err)){
+            console.log('No errors found');
             generateMovieDetailResponse(req, res, body);
-        }
+        } // add else clause!
     });
 };
 
@@ -41,6 +43,7 @@ function movieDetails(req, res){
 * @param {Object} data - Movie details as JSON
 */
 function generateMovieDetailResponse(req, res, data){
+    console.log('Generating movie details response');
     var speechText;
     var contextOut = [];
     switch (req.body.result.parameters.movieDetails) {

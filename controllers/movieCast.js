@@ -11,15 +11,18 @@ var informationNotFound = suppFunc.informationNotFound;
 * @param {Object} res - Response
 */
 function movieCast(req, res){
+    console.log('Request received for movieCast');
     // list of actors requested by the user
     var actors = req.body.result.parameters.actorName;
     // to map each movie to the number of occurrences
     var movieMap = new Map();
 
     request(getPersonRequestOptions(actors[0]), function(err, response, body){
+        console.log('Attempting to connect to API');
         if (!containsErrors(res, response, err)){
+            console.log('No errors found');
             if (body.results.length > 0){
-
+                console.log('Results found');
                 // list of movies the actor is known for
                 var movies = body.results[0].known_for;
 
@@ -46,7 +49,7 @@ function movieCast(req, res){
 *   looked up
 */
 function getUpdatedActorList(res, movieMap, actors, counter){
-
+    console.log('Getting updated list of actors');
     if (counter >= actors.length){ // if all actors have been looked up
         // delete movies that don't contain all actors
         movieMap.forEach(function(value, key, map){
@@ -58,11 +61,14 @@ function getUpdatedActorList(res, movieMap, actors, counter){
         generateMovieCastResponse(res, movieMap, actors);
     } else {
         request(getPersonRequestOptions(actors[counter]), function(err, response, body){
+            console.log('Attempting to connect to API');
             if (!containsErrors(res, response, err)){
+                console.log('No errors found');
                 if (body.results.length > 0){
-
+                    console.log('Results found');
                     var movies = body.results[0].known_for;
 
+                    console.log('Finding results common to each actor');
                     // only update number of occurrences if the movie exists in
                     // the map
                     for (var i = 0; i < movies.length; i++){
@@ -90,14 +96,17 @@ function getUpdatedActorList(res, movieMap, actors, counter){
 * @param {Array.<String>} actors - List of actors requested by the user
 */
 function generateMovieCastResponse(res, movieMap, actors){
+    console.log('Generating movie cast response');
     // maximum number of movies to show is 3
     var numMovies = (movieMap.size > 3 ? 3 : movieMap.size);
     var speechText;
 
     if (numMovies === 0) { // if no movies with all actors were found
+        console.log('No common movies found');
         speechText = "I could not find any movies starring "
                     + actors.join(',');
     } else {
+        console.log('Common movies found');
         var movies = movieMap.entries();
         speechText = movies.next().value[0];
 

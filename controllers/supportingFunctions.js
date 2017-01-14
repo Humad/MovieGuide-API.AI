@@ -16,6 +16,7 @@ function sendResponse(res, speechResponse){
 */
 function containsErrors(res, response, err){
     if (err || response.statusCode !== 200){
+        console.log("Error found: " + err);
         res.status(400);
         res.send(err);
         return true;
@@ -57,6 +58,7 @@ function informationNotFound(res, query){
         "contextOut":[],
         "source":""
     };
+    console.log('Information not found');
     sendResponse(res, speechResponse);
 }
 
