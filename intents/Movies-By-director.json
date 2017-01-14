@@ -50,11 +50,13 @@
           "required": true,
           "dataType": "@sys.any",
           "name": "directorName",
-          "value": "$directorName",
-          "prompts": [
-            "What director would you like to see movies from?"
-          ],
-          "isList": false
+          "value": "$directorName"
+        },
+        {
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "directorNameInContext",
+          "value": "#director-context.directorName"
         }
       ],
       "messages": [

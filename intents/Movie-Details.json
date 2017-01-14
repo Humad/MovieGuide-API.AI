@@ -1,6 +1,41 @@
 {
   "userSays": [
     {
+      "id": "09e637b2-bf38-4d54-86fd-56ebb645f867",
+      "data": [
+        {
+          "text": "who directed star wars"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a62c5c67-4368-48d5-8541-e926e75c6ddd",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "star wars",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
       "id": "44909cea-b6c2-416e-9346-b81733244812",
       "data": [
         {

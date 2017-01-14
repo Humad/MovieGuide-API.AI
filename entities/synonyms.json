@@ -1,0 +1,16 @@
+{
+  "id": "8b19913e-02ec-4e53-b065-0f32d771cf75",
+  "name": "synonyms",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "movies",
+      "synonyms": [
+        "movies",
+        "films"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

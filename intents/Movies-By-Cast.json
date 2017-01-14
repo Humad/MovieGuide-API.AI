@@ -1,6 +1,75 @@
 {
   "userSays": [
     {
+      "id": "4e391998-55fe-4019-8879-e6872234eff9",
+      "data": [
+        {
+          "text": "what movies did carrie fisher star in"
+        }
+      ],
+      "isTemplate": false,
+      "count": 10
+    },
+    {
+      "id": "62839342-27a1-4989-9ef2-39ced6c78874",
+      "data": [
+        {
+          "text": "movies starring "
+        },
+        {
+          "text": "carrie fisher",
+          "alias": "actorName",
+          "meta": "@sys.any",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "52a443b0-d6e7-4583-b0df-5e07ffa2a3a3",
+      "data": [
+        {
+          "text": "what movies did "
+        },
+        {
+          "text": "carrie fisher",
+          "alias": "actorName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "star",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " in"
+        }
+      ],
+      "isTemplate": false,
+      "count": 10
+    },
+    {
+      "id": "62e2400f-33bc-4374-92a0-a1448ab235c1",
+      "data": [
+        {
+          "text": "movies starring "
+        },
+        {
+          "text": "actorName",
+          "alias": "actorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
       "id": "2d97738f-f5d9-4a29-a123-7e14cedcf975",
       "data": [
         {
@@ -42,9 +111,18 @@
   "contexts": [],
   "responses": [
     {
-      "resetContexts": false,
+      "resetContexts": true,
       "action": "movie.cast",
-      "affectedContexts": [],
+      "affectedContexts": [
+        {
+          "name": "context-actor",
+          "lifespan": 5
+        },
+        {
+          "name": "actor-context",
+          "lifespan": 5
+        }
+      ],
       "parameters": [
         {
           "required": true,

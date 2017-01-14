@@ -1,0 +1,150 @@
+{
+  "userSays": [
+    {
+      "id": "415a98d4-f466-4e6e-818c-62f627c5e383",
+      "data": [
+        {
+          "text": "what other movies did he direct"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "007bf3a3-732f-4ed1-a066-b20cfd490b7a",
+      "data": [
+        {
+          "text": "other "
+        },
+        {
+          "text": "movies",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " by them"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4592a523-6877-4534-a8f8-4993f94876f2",
+      "data": [
+        {
+          "text": "other "
+        },
+        {
+          "text": "movies",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " by her"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "bccfe5bf-ed67-4398-b090-550ade9c2b1d",
+      "data": [
+        {
+          "text": "other "
+        },
+        {
+          "text": "movies",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " by him"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8d66c3cb-1e51-4074-bb9a-f104b8d217cb",
+      "data": [
+        {
+          "text": "what else have they "
+        },
+        {
+          "text": "directed",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "75e11a14-ea35-49b8-9e8e-8392e06d9dbf",
+      "data": [
+        {
+          "text": "what else has she "
+        },
+        {
+          "text": "directed",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e2c7fca4-9065-46c9-ac45-e33b8a263ce6",
+      "data": [
+        {
+          "text": "what else has he "
+        },
+        {
+          "text": "directed",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "9245cb84-950a-42c4-9870-b2006cb0fb04",
+  "name": "director-context",
+  "auto": true,
+  "contexts": [
+    "director-context"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.director",
+      "affectedContexts": [
+        {
+          "name": "director-context",
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "directorName",
+          "value": "#director-context.directorName"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Whoopsies, my servers seem to be having a problem..."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
