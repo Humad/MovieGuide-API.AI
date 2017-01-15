@@ -4,7 +4,6 @@ var suppFunc = require('./supportingFunctions');
 var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
 
-
 /**
 * Gets particular movie details requested by the user
 * @param {Object} req - Request
@@ -45,7 +44,9 @@ function movieDetails(req, res){
 function generateMovieDetailResponse(req, res, data){
     console.log('Generating movie details response');
     var speechText;
-    var contextOut = [];
+    var contextOut = [
+        {name: 'movie-details-context', parameters: {movieName: data.title}}
+    ];
     switch (req.body.result.parameters.movieDetails) {
         case "director":
             speechText = data.Title + " is directed by " + data.Director;
