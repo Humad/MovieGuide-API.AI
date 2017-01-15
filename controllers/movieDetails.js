@@ -1,5 +1,4 @@
 var request = require('request');
-sendResponse = (require('./supportingFunctions')).sendResponse;
 var suppFunc = require('./supportingFunctions');
 var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
@@ -45,7 +44,7 @@ function generateMovieDetailResponse(req, res, data){
     console.log('Generating movie details response');
     var speechText;
     var contextOut = [
-        {name: 'movie-details-context', parameters: {movieName: data.title}}
+        {name: 'movie-details-context', parameters: {movieName: data.Title}}
     ];
     switch (req.body.result.parameters.movieDetails) {
         case "director":
@@ -88,7 +87,7 @@ function generateMovieDetailResponse(req, res, data){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":contextOut,
+        "contextOut": contextOut,
         "source":""
     };
 
