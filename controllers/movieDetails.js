@@ -43,9 +43,7 @@ function movieDetails(req, res){
 function generateMovieDetailResponse(req, res, data){
     console.log('Generating movie details response');
     var speechText;
-    var contextOut = [
-        {name: 'movie-details-context', parameters: {movieName: data.Title}}
-    ];
+    var contextOut = [];
     switch (req.body.result.parameters.movieDetails) {
         case "director":
             speechText = data.Title + " is directed by " + data.Director;
@@ -82,6 +80,8 @@ function generateMovieDetailResponse(req, res, data){
                         + ". The movie has a rating of " + data.tomatoMeter
                         + " percent on Rotten Tomatoes";
         }
+
+    contextOut.push({name: 'movie-details-context', parameters: {movieName: data.Title}});
 
     var speechResponse = {
         "speech": speechText,
