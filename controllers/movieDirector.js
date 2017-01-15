@@ -88,6 +88,9 @@ function generateMovieDirectorResponse(res, movies, director){
     // maximum number of movies to show is 3
     var numMovies = (movies.length > 3 ? 3 : movies.length);
     var speechText;
+    contextOut = [
+        {name: 'director-context', parameters: {directorName: director}}
+    ];
 
     if (numMovies === 0) { // if no movies were found
         console.log('No movies found');
@@ -96,6 +99,9 @@ function generateMovieDirectorResponse(res, movies, director){
     } else {
         console.log('Movies found');
         speechText = movies[0].title;
+        contextOut.push(
+            {name: 'movie-details-context', parameters: {movieName: movies[0].title}}
+        );
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
             speechText += (", " + movies[i].title);
@@ -107,12 +113,7 @@ function generateMovieDirectorResponse(res, movies, director){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":[{
-            name: 'director-context',
-            parameters: {
-                directorName: director
-            }
-        }],
+        "contextOut": contextOut,
         "source":""
     };
 

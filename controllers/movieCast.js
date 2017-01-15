@@ -100,6 +100,9 @@ function generateMovieCastResponse(res, movieMap, actors){
     // maximum number of movies to show is 3
     var numMovies = (movieMap.size > 3 ? 3 : movieMap.size);
     var speechText;
+    contextOut = [
+        {name: 'actor-context', parameters: {actorName: actors[0]}}
+    ];
 
     if (numMovies === 0) { // if no movies with all actors were found
         console.log('No common movies found');
@@ -109,6 +112,9 @@ function generateMovieCastResponse(res, movieMap, actors){
         console.log('Common movies found');
         var movies = movieMap.entries();
         speechText = movies.next().value[0];
+        contextOut.push(
+            {name: 'movie-details-context', parameters: {movieName: speechText}}
+        );
 
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and" : "");
@@ -126,12 +132,7 @@ function generateMovieCastResponse(res, movieMap, actors){
         "speech": speechText,
         "displayText": speechText,
         "data": {},
-        "contextOut":[{
-            name: "actor-context",
-            parameters:{
-                actorName: actors
-            }
-        }],
+        "contextOut": contextOut,
         "source":""
     };
 
