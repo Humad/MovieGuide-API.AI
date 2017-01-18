@@ -1,17 +1,107 @@
 {
   "userSays": [
     {
-      "id": "09e637b2-bf38-4d54-86fd-56ebb645f867",
+      "id": "df8582f1-411c-4ef6-b8da-0ae215401ac5",
       "data": [
         {
-          "text": "who directed star wars"
+          "text": "what is "
+        },
+        {
+          "text": "la la land",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "bcf15573-22c5-4159-9dba-bd24d1bc7b16",
+      "data": [
+        {
+          "text": "what is "
+        },
+        {
+          "text": "ex machina",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
         }
       ],
       "isTemplate": false,
       "count": 0
     },
     {
-      "id": "a62c5c67-4368-48d5-8541-e926e75c6ddd",
+      "id": "0833454d-a439-4650-803c-e52ae9d2e1d3",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "la la land",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "9c3b1601-7bed-4842-a935-67c4c18dc3a3",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "star wars",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "81c015a3-bc51-4d19-bae5-f59074a9b82f",
       "data": [
         {
           "text": "who "
@@ -26,7 +116,133 @@
           "text": " "
         },
         {
-          "text": "star wars",
+          "text": "whiplash",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "53034b9b-70cd-41c5-bf5a-a2a0945bd3a5",
+      "data": [
+        {
+          "text": "What is "
+        },
+        {
+          "text": "Ex Machina",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "2afdf3c4-f6ab-4446-a1f7-d8f7d68e91a0",
+      "data": [
+        {
+          "text": "Who "
+        },
+        {
+          "text": "stars",
+          "alias": "movieDetails",
+          "meta": "@movieDetails"
+        },
+        {
+          "text": " in "
+        },
+        {
+          "text": "La La Land?",
+          "alias": "movieName",
+          "meta": "@sys.any"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "68314eb9-f6eb-423c-a97d-ea4caeca63ba",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "snow white",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 2
+    },
+    {
+      "id": "c102b252-3e6d-4b57-84d8-0d34668c26a1",
+      "data": [
+        {
+          "text": "when was "
+        },
+        {
+          "text": "star trek",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "released",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 3
+    },
+    {
+      "id": "60bfe446-3d0a-4938-8365-ad628836a063",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "sing street",
           "alias": "movieName",
           "meta": "@sys.any",
           "userDefined": false
@@ -34,6 +250,50 @@
       ],
       "isTemplate": false,
       "count": 0
+    },
+    {
+      "id": "b9a1332b-5386-4260-891a-d7f1fa0b243a",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " star wars"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "5507803c-1d4a-4b18-9fe9-ec782ad1845a",
+      "data": [
+        {
+          "text": "when",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " was "
+        },
+        {
+          "text": "star trek",
+          "alias": "movieName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": " released"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
     },
     {
       "id": "44909cea-b6c2-416e-9346-b81733244812",
@@ -223,7 +483,16 @@
           "userDefined": true
         },
         {
-          "text": " released in"
+          "text": " "
+        },
+        {
+          "text": "released",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        },
+        {
+          "text": " in"
         }
       ],
       "isTemplate": false,
@@ -295,7 +564,8 @@
           "value": "$movieName",
           "prompts": [
             "What movie would you like details for?"
-          ]
+          ],
+          "isList": false
         },
         {
           "dataType": "@movieDetails",

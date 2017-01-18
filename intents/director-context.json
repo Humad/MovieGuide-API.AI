@@ -1,6 +1,34 @@
 {
   "userSays": [
     {
+      "id": "d86bb741-d163-4e7d-8daf-b9eaae391ee6",
+      "data": [
+        {
+          "text": "What else has he "
+        },
+        {
+          "text": "directed",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1264af50-fcbd-453f-bb07-806ba14164d6",
+      "data": [
+        {
+          "text": "what else has he directed"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
       "id": "415a98d4-f466-4e6e-818c-62f627c5e383",
       "data": [
         {

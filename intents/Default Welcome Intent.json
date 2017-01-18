@@ -4,7 +4,7 @@
       "id": "b4db46d3-083c-462e-b7b0-475e078fbb2f",
       "data": [
         {
-          "text": "Talk to Movie Buff"
+          "text": "Talk to Movie Guide"
         }
       ],
       "isTemplate": false,
@@ -25,7 +25,7 @@
         {
           "type": 0,
           "speech": [
-            "Hey there, this is Movie Buff",
+            "Hey there, this is Movie Guide",
             "In the mood for a movie?"
           ]
         }

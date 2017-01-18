@@ -1,0 +1,279 @@
+{
+  "userSays": [
+    {
+      "id": "12fbd7f0-3288-4138-b37a-0a55ce9728ae",
+      "data": [
+        {
+          "text": "When",
+          "alias": "movieDetails",
+          "meta": "@movieDetails"
+        },
+        {
+          "text": " was it released?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "747b4bc3-2895-47d7-8fa3-dc74e569e186",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "stars",
+          "alias": "movieDetails",
+          "meta": "@movieDetails"
+        },
+        {
+          "text": " in that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "474a2276-3a9e-4bdd-9e1d-b29d0dc950d9",
+      "data": [
+        {
+          "text": "whats it "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "631ea2cf-7641-4c33-95dd-f7c9bc3e97c6",
+      "data": [
+        {
+          "text": "what is it "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "79d2d12d-f784-4dd8-9ae2-1638e383582a",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "stars",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " in it"
+        }
+      ],
+      "isTemplate": false,
+      "count": 6
+    },
+    {
+      "id": "2ddc8551-ab0e-4f00-b7c3-725019631a8f",
+      "data": [
+        {
+          "text": "when",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " was it "
+        },
+        {
+          "text": "released",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "3b0e2a0e-ad6a-419c-9d22-b51583f8d9fe",
+      "data": [
+        {
+          "text": "what "
+        },
+        {
+          "text": "year",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " did it release in"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0d872829-d5ba-4307-bc1f-13df36cc8361",
+      "data": [
+        {
+          "text": "when",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " did it release"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "04604898-22fe-4727-988d-2331a951d4c3",
+      "data": [
+        {
+          "text": "who is the "
+        },
+        {
+          "text": "director",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " of that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d521ffeb-a0df-47d1-afec-bd4f954fc8a2",
+      "data": [
+        {
+          "text": "what is that "
+        },
+        {
+          "text": "about",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "96ddb9d1-7224-4cbe-b5d1-a01cf2f9a137",
+      "data": [
+        {
+          "text": "what is the "
+        },
+        {
+          "text": "plot",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " in that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e7a2534a-3e7d-4368-8373-6ca37c1eecc7",
+      "data": [
+        {
+          "text": "what are the "
+        },
+        {
+          "text": "reviews",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " for that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "40ec0c3d-60ef-4e07-bca7-d10022345040",
+      "data": [
+        {
+          "text": "who "
+        },
+        {
+          "text": "directed",
+          "alias": "movieDetails",
+          "meta": "@movieDetails",
+          "userDefined": false
+        },
+        {
+          "text": " that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "505cfa93-cae5-433e-9b75-833addee71ad",
+  "name": "movie-details-context",
+  "auto": true,
+  "contexts": [
+    "movie-details-context"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "movie.details",
+      "affectedContexts": [
+        {
+          "name": "movie-details-context",
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "dataType": "@movieDetails",
+          "name": "movieDetails",
+          "value": "$movieDetails",
+          "isList": false
+        },
+        {
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "movieName",
+          "value": "#movie-details-context.movieName"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Oh no, my servers being weird..."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

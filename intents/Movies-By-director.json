@@ -1,6 +1,63 @@
 {
   "userSays": [
     {
+      "id": "3732fb56-9082-455b-b73c-828e31d4abea",
+      "data": [
+        {
+          "text": "what are some movies by "
+        },
+        {
+          "text": "Christopher Nolan",
+          "alias": "directorName",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2f42110e-2e10-450a-80d9-a65fb2376a97",
+      "data": [
+        {
+          "text": "What are some movies by "
+        },
+        {
+          "text": "Martin Scorcese",
+          "alias": "directorName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c367cf14-110e-456f-9618-f281db7bb7a0",
+      "data": [
+        {
+          "text": "What are some movies by "
+        },
+        {
+          "text": "Christopher Nolan",
+          "alias": "directorName",
+          "meta": "@sys.any",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
       "id": "9a9057e4-7bb4-477d-a666-029315bf565e",
       "data": [
         {
@@ -51,12 +108,6 @@
           "dataType": "@sys.any",
           "name": "directorName",
           "value": "$directorName"
-        },
-        {
-          "required": false,
-          "dataType": "@sys.any",
-          "name": "directorNameInContext",
-          "value": "#director-context.directorName"
         }
       ],
       "messages": [
