@@ -14,18 +14,23 @@ Here are some interaction samples:
 
 
 You can invoke Movie Guide on your Google/Android device like this,
+
 ![Invocation](/sample-screenshots/invocation.png?raw=true "Invocation")
 
 You can ask for movie details such as,
+
 ![Who stars](/sample-screenshots/who-stars.png?raw=true "Who stars?")
 
 And,
+
 ![Who directs](/sample-screenshots/who-directs.png?raw=true "Who directs?")
 
 You can also ask things like,
+
 ![Starring](/sample-screenshots/starring.png?raw=true "Starring")
 
 Movie Guide remembers what you were talking about, through the power of contexts!
+
 ![Follow up](/sample-screenshots/follow-up.png?raw=true "Follow up")
 
 # Limitations
