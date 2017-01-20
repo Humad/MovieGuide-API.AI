@@ -48,12 +48,16 @@ function findDirected(url, res, director){
     var movies = [];
     request(url, function(err, response, body){
         if (!containsErrors(res, response, err)){
+            console.log('Getting movies by ' + director);
             var $ = cheerio.load(body);
             var result = $('#filmo-head-director').next().find('a');
             result.each(function(index, element){
+                console.log($(this).text());
                 movies.push($(this).text());
             });
             if (movies.length > 0){
+                console.log(movies.length + ' movies found');
+                console.log(movies);
                 generateMovieDirectorResponse(res, movies, director);
             } else {
                 informationNotFound(res, director);
