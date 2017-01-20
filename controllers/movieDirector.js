@@ -87,13 +87,13 @@ function generateMovieDirectorResponse(res, movies, director){
                     + director;
     } else {
         console.log('Movies found');
-        speechText = movies[0].title;
+        speechText = movies[0];
         contextOut.push(
-            {name: 'movie-details-context', parameters: {movieName: movies[0].title}}
+            {name: 'movie-details-context', parameters: {movieName: movies[0]}}
         );
         for (var i = 1; i < numMovies; i++){
             speechText += (i !== 1 && i === numMovies - 1 ? " and " : "");
-            speechText += (", " + movies[i].title);
+            speechText += (", " + movies[i]);
         }
         speechText = director + " has directed movies such as " + speechText;
     }
