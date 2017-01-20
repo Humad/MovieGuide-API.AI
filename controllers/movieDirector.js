@@ -24,7 +24,7 @@ function movieDirector(req, res){
             var $ = cheerio.load(body);
             var result = $('.result_text a').first();
             var resultName = result.text();
-            if (resultName !== director) {
+            if (resultName.toLowerCase() !== director.toLowerCase()) {
                 console.log('Director not found');
                 informationNotFound(res, director);
             } else {
