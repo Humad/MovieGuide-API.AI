@@ -20,8 +20,10 @@ function containsErrors(res, response, err){
         res.status(400);
         res.send(err);
         return true;
+    } else {
+        console.log('No errors found');
+        return false;
     }
-    return false;
 }
 
 /**
