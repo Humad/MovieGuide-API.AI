@@ -1,5 +1,6 @@
 var request = require('request');
 var suppFunc = require('./supportingFunctions');
+var cheerio = require('cheerio');
 var sendResponse = suppFunc.sendResponse;
 var containsErrors = suppFunc.containsErrors;
 var getPersonRequestOptions = suppFunc.getPersonRequestOptions;
