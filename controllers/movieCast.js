@@ -51,7 +51,7 @@ function movieCast(req, res){
 function findMovies(url, res, actors, counter, movieMap){
     request(url, function(err, response, body){
         if (!containsErrors(res, response, err)){
-            console.log('Getting movies by ' + actors[counter]);
+            console.log('Getting movies with ' + actors[counter]);
             var $ = cheerio.load(body);
             var result = $('#filmo-head-actor').next().find('a');
             result.each(function(index, element){
@@ -81,7 +81,7 @@ function findMovies(url, res, actors, counter, movieMap){
 * @param {Map.<String, number>} movieMap - Movie names mapped to counters
 *   to check if the movie is common between multiple actors
 */
-function findOtherActors(url, res, actors, counter, movieMap){
+function findOtherActors(res, actors, counter, movieMap){
     if (counter >= actors.length){ // if all actors have been looked up
         // delete movies that don't contain all actors
         movieMap.forEach(function(value, key, map){
