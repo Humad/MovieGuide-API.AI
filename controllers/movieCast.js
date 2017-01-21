@@ -6,7 +6,7 @@ var getPersonRequestOptions = suppFunc.getPersonRequestOptions;
 var informationNotFound = suppFunc.informationNotFound;
 
 /**
-* Finds the movies that ONE actor is known for
+* Locate the first actor by scraping IMDb
 * @param {Object} req - Request
 * @param {Object} res - Response
 */
@@ -17,39 +17,70 @@ function movieCast(req, res){
     // to map each movie to the number of occurrences
     var movieMap = new Map();
 
-    request(getPersonRequestOptions(actors[0]), function(err, response, body){
-        console.log('Attempting to connect to API');
+    var url = 'http://www.imdb.com/find?q=' +
+                encodeURIComponent(actors[0]) +
+                '&s=nm&ref_=fn_nm';
+
+    request(url, function(err, response, body){
         if (!containsErrors(res, response, err)){
-            console.log('No errors found');
-            if (body.results.length > 0){
-                console.log('Results found');
-                // list of movies the actor is known for
-                var movies = body.results[0].known_for;
-
-                // mapping each movie to one occurrence
-                for (var i = 0; i < movies.length; i++){
-                    movieMap.set(movies[i].title, 1);
-                }
-
-                getUpdatedActorList(res, movieMap, actors, 1);
-            } else {
+            var $ = cheerio.load(body);
+            var result = $('.result_text a').first();
+            var resultName = result.text();
+            if (resultName.toLowerCase() !== actors[0].toLowerCase()) {
+                console.log('Actor not found');
                 informationNotFound(res, actors[0]);
+            } else {
+                var resultLink = result.attr('href');
+                console.log('Information found');
+                findMovies(resultLink, res, actors, 0, movieMap);
             }
         }
     });
 };
 
 /**
-* Finds movies by other actors and checks if there are any shared movies
+* Find movies for an actor
+* @param {String} url - URL for actor's IMDb page
 * @param {Object} res - Response
+* @param {Array.<String>} actors - List of actors requested by the user
+* @param {Number} counter - Current actor being looked up
 * @param {Map.<String, number>} movieMap - Movie names mapped to counters
 *   to check if the movie is common between multiple actors
-* @param {Array.<String>} actors - List of actors requested by the user
-* @param {number} counter - Counter that keeps track of what actor is being
-*   looked up
 */
-function getUpdatedActorList(res, movieMap, actors, counter){
-    console.log('Getting updated list of actors');
+function findMovies(url, res, actors, counter, movieMap){
+    request(url, function(err, response, body){
+        if (!containsErrors(res, response, err)){
+            console.log('Getting movies by ' + actors[counter]);
+            var $ = cheerio.load(body);
+            var result = $('#filmo-head-actor').next().find('a');
+            result.each(function(index, element){
+                if (!$(this).hasClass('in_production')){
+                    var movieName = $(this).text();
+                    if (movieMap.has(movieName) || counter === 0){
+                        if (counter === 0){
+                            movieMap.set(movieName, 1);
+                        }
+                        if (movieMap.get(movieName) == counter){
+                            movieMap.set(movieName, counter + 1);
+                        }
+                    }
+                }
+            });
+            findOtherActors(res, actors, counter + 1, movieMap);
+        }
+    }
+}
+
+/**
+* Find other actors requested by the user
+* @param {String} url - URL for actor's IMDb page
+* @param {Object} res - Response
+* @param {Array.<String>} actors - List of actors requested by the user
+* @param {Number} counter - Current actor being looked up
+* @param {Map.<String, number>} movieMap - Movie names mapped to counters
+*   to check if the movie is common between multiple actors
+*/
+function findOtherActors(url, res, actors, counter, movieMap){
     if (counter >= actors.length){ // if all actors have been looked up
         // delete movies that don't contain all actors
         movieMap.forEach(function(value, key, map){
@@ -57,31 +88,24 @@ function getUpdatedActorList(res, movieMap, actors, counter){
                 map.delete(key);
             }
         });
-
-        generateMovieCastResponse(res, movieMap, actors);
     } else {
-        request(getPersonRequestOptions(actors[counter]), function(err, response, body){
-            console.log('Attempting to connect to API');
+        console.log('Finding movies with ' + actors[counter]);
+        var url = 'http://www.imdb.com/find?q=' +
+                    encodeURIComponent(actors[counter]) +
+                    '&s=nm&ref_=fn_nm';
+
+        request(url, function(err, response, body){
             if (!containsErrors(res, response, err)){
-                console.log('No errors found');
-                if (body.results.length > 0){
-                    console.log('Results found');
-                    var movies = body.results[0].known_for;
-
-                    console.log('Finding results common to each actor');
-                    // only update number of occurrences if the movie exists in
-                    // the map
-                    for (var i = 0; i < movies.length; i++){
-                        if (movieMap.has(movies[i].title)){
-                            if (movieMap.get(movies[i].title) == counter){
-                                movieMap.set(movies[i].title, counter + 1);
-                            }
-                        }
-                    }
-
-                    getUpdatedActorList(res, movieMap, actors, counter + 1);
+                var $ = cheerio.load(body);
+                var result = $('.result_text a').first();
+                var resultName = result.text();
+                if (resultName.toLowerCase() !== actors[counter].toLowerCase()) {
+                    console.log('Actor not found');
+                    informationNotFound(res, actors[counter]);
                 } else {
-                    informationNotFound(actors[counter]);
+                    var resultLink = result.attr('href');
+                    console.log('Information found');
+                    findMovies(resultLink, res, actors, counter, movieMap);
                 }
             }
         });

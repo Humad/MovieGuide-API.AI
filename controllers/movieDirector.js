@@ -52,8 +52,10 @@ function findDirected(url, res, director){
             var $ = cheerio.load(body);
             var result = $('#filmo-head-director').next().find('a');
             result.each(function(index, element){
-                console.log($(this).text());
-                movies.push($(this).text());
+                if (!$(this).hasClass('in_production')){
+                    console.log($(this).text());
+                    movies.push($(this).text());
+                }
             });
             if (movies.length > 0){
                 console.log(movies.length + ' movies found');
