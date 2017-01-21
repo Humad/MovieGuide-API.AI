@@ -53,7 +53,13 @@ function findMovies(url, res, actors, counter, movieMap){
         if (!containsErrors(res, response, err)){
             console.log('Getting movies with ' + actors[counter]);
             var $ = cheerio.load(body);
-            var result = $('#filmo-head-actor').next()
+            var result = $('#filmo-head-actor');
+
+            if (result.length === 0){
+                result = $('#filmo-head-actress');
+            }
+
+            result = result.next()
                             .find($('.filmo-row'))
                             .find('b')
                             .find('a');
