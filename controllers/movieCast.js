@@ -72,7 +72,7 @@ function findMovies(url, res, actors, counter, movieMap){
                 }
             });
 
-            var result = $('#filmo-head-actor').next().find('.filmo-row-odd');
+            var result = $('#filmo-head-actor').next().find('.filmo-row-even');
             var result = result.find('b').find('a');
 
             result.each(function(index, element){
@@ -88,6 +88,8 @@ function findMovies(url, res, actors, counter, movieMap){
                     }
                 }
             });
+
+            console.log(movieMap);
 
             findOtherActors(res, actors, counter + 1, movieMap);
         }
