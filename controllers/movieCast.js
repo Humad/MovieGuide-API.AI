@@ -68,7 +68,7 @@ function findMovies(url, res, actors, counter, movieMap){
             });
             findOtherActors(res, actors, counter + 1, movieMap);
         }
-    }
+    });
 }
 
 /**
