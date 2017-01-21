@@ -57,10 +57,14 @@ function findMovies(url, res, actors, counter, movieMap){
 
             var result = $('#filmo-head-actor').next().find('.filmo-row-odd');
             var result = result.find('b').find('a');
+            console.log('***************')
+            console.log(result);
+            console.log('***************')
 
             result.each(function(index, element){
                 if (!$(this).hasClass('in_production')){
                     var movieName = $(this).text();
+                    console.log(movieName)
                     if (movieMap.has(movieName) || counter === 0){
                         if (counter === 0){
                             movieMap.set(movieName, 1);
@@ -74,10 +78,13 @@ function findMovies(url, res, actors, counter, movieMap){
 
             var result = $('#filmo-head-actor').next().find('.filmo-row-even');
             var result = result.find('b').find('a');
-
+            console.log('***************')
+            console.log(result);
+            console.log('***************')
             result.each(function(index, element){
                 if (!$(this).hasClass('in_production')){
                     var movieName = $(this).text();
+                    console.log(movieName);
                     if (movieMap.has(movieName) || counter === 0){
                         if (counter === 0){
                             movieMap.set(movieName, 1);
