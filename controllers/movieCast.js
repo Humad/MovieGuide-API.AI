@@ -33,7 +33,7 @@ function movieCast(req, res){
             } else {
                 var resultLink = result.attr('href');
                 console.log('Information found');
-                findMovies(resultLink, res, actors, 0, movieMap);
+                findMovies('http://www.imdb.com' + resultLink, res, actors, 0, movieMap);
             }
         }
     });
@@ -106,7 +106,7 @@ function findOtherActors(url, res, actors, counter, movieMap){
                 } else {
                     var resultLink = result.attr('href');
                     console.log('Information found');
-                    findMovies(resultLink, res, actors, counter, movieMap);
+                    findMovies('http://www.imdb.com' + resultLink, res, actors, counter, movieMap);
                 }
             }
         });
