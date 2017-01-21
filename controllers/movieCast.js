@@ -53,7 +53,11 @@ function findMovies(url, res, actors, counter, movieMap){
         if (!containsErrors(res, response, err)){
             console.log('Getting movies with ' + actors[counter]);
             var $ = cheerio.load(body);
-            var result = $('#filmo-head-actor').next().find('a');
+            //var result = $('#filmo-head-actor').next().find('a');
+
+            var result = $('#filmo-head-actor').next().find('.filmo-row-odd');
+            var result = result.find('b').find('a');
+
             result.each(function(index, element){
                 if (!$(this).hasClass('in_production')){
                     var movieName = $(this).text();
@@ -67,6 +71,24 @@ function findMovies(url, res, actors, counter, movieMap){
                     }
                 }
             });
+
+            var result = $('#filmo-head-actor').next().find('.filmo-row-odd');
+            var result = result.find('b').find('a');
+
+            result.each(function(index, element){
+                if (!$(this).hasClass('in_production')){
+                    var movieName = $(this).text();
+                    if (movieMap.has(movieName) || counter === 0){
+                        if (counter === 0){
+                            movieMap.set(movieName, 1);
+                        }
+                        if (movieMap.get(movieName) == counter){
+                            movieMap.set(movieName, counter + 1);
+                        }
+                    }
+                }
+            });
+            
             findOtherActors(res, actors, counter + 1, movieMap);
         }
     });
