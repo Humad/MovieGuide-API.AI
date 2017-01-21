@@ -88,7 +88,7 @@ function findMovies(url, res, actors, counter, movieMap){
                     }
                 }
             });
-            
+
             findOtherActors(res, actors, counter + 1, movieMap);
         }
     });
@@ -105,12 +105,14 @@ function findMovies(url, res, actors, counter, movieMap){
 */
 function findOtherActors(res, actors, counter, movieMap){
     if (counter >= actors.length){ // if all actors have been looked up
+        console.log('All actors found');
         // delete movies that don't contain all actors
         movieMap.forEach(function(value, key, map){
             if (map.get(key) != actors.length){
                 map.delete(key);
             }
         });
+        generateMovieCastResponse(res, movieMap, actors)
     } else {
         console.log('Finding movies with ' + actors[counter]);
         var url = 'http://www.imdb.com/find?q=' +
