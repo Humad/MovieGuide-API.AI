@@ -7,6 +7,8 @@ It is integrated with Actions on Google and can be used on devices such as smart
 
 Alternatively, you can interact with Movie Guide on your browser by going [here](https://bot.api.ai/3ade4c0c-0b75-4fb9-a659-1518e26c6207)
 
+Update (5/9/2017): One of the APIs used in the development of this project has since changed. This results in MovieGuide not being able to give the correct ratings for some movies.
+
 # What does it do?
 Movie Guide offers information to the user about movies. Users can interact with it using their voice or through text.
 
@@ -38,6 +40,6 @@ Movie Guide remembers what you were talking about, through the power of contexts
 When the server is loading up, or if it somehow crashes, Movie Guide will let you know.
 
 - The two APIs I am using to gather information about movies are limited in their functionality, especially when it comes to obtaining information about directors and actors. Therefore, sometimes, Movie Guide will be unable to provide COMPLETE information. It tries its best though :)
-I will be updating the application once a more sophisticated API is available, or until I finish working on my web scraper.
+~I will be updating the application once a more sophisticated API is available, or until I finish working on my web scraper.~
 
 
