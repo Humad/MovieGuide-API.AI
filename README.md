@@ -9,6 +9,8 @@ Alternatively, you can interact with Movie Guide on your browser by going [here]
 
 Update (5/9/2017): One of the APIs used in the development of this project has since changed. This results in MovieGuide not being able to give the correct ratings for some movies.
 
+Update (6/17/2017): Due to API.AI requiring a fast response from the server, the response sometimes fails because the Heroku dynos didn't start up in time. This causes the application to crash until I manually restart it. I'm looking into other solutions, but as of now MovieGuide is **not** fully functional.
+
 # What does it do?
 Movie Guide offers information to the user about movies. Users can interact with it using their voice or through text.
 
